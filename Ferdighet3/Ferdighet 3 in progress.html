@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+
+</head>
+
+<body>
+    <style>
+        table {
+            font-size: 90px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -200px;
+        }
+
+        #en {
+            border-style: solid;
+        }
+
+        #to {
+            border-style: solid;
+        }
+
+        #tre {
+            border-style: solid;
+        }
+
+        #fire {
+
+            border-style: solid;
+        }
+    </style>
+
+    <center>
+        <table>
+            <tr>
+                <td id="en" onmouseover="changeit(this)">o</td>
+                <td id="to" onmouseover="changeit(this)">o</td>
+            </tr>
+            <tr>
+                <td id="tre" onmouseover="changeit(this)">o</td>
+                <td id='fire' onmouseover="changeit(this)">o</td>
+            </tr>
+        </table>
+    </center>
+
+    <script>
+        function changeit(fromOtoX) {
+            fromOtoX.innerHTML = 'x';
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
