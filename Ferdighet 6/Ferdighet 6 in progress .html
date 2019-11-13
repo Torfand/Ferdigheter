@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+</head>
+
+<body>
+    <h1>Ferdighet 6</h1>
+    <input id="szSlider" type="range" min="100" max="500" step="10" oninput="showdiv()" />
+    <br><input id="textBox" type="text" oninput="showdiv()" value="change text" />
+    <select id="colorChoice" onchange="showdiv()">
+        <option value="red">Red color </option>
+        <option value="blue">Blue Color</option>
+        <option value="green">Green Color</option>
+    </select>
+    <div id="resultNonPage"></div>
+    <div id="resultPage" style="font-family: monospace"></div>
+
+    <script>
+
+        var result = document.getElementById("resultNonPage");
+        var resultCode = document.getElementById("resultPage");
+        var sSlider = document.getElementById("szSlider");
+        var txtin = document.getElementById("textbox");
+        var cChoice = document.getElementById("colorChoice");
+
+        showdiv();
+
+        function showdiv() {
+
+            var size = sSlider.value;
+            var text = txtin.value;
+            var color = cChoice.value;
+
+            var backgroundColor = 'background-color: ' + color + ';';
+            var width = 'width: ' + size + 'px;';
+            var height = 'height: ' + size + 'px';
+            var style = 'style="' + backgroundColor + width + height + '"';
+            result.innerHTML = '<div ' + style + '>' + text + '</div>';
+            resultCode.innerText = result.innerHTML;
+
+
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
