@@ -1,0 +1,45 @@
+<html lang="en-Us">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Event test</title>
+</head>
+<style>
+    div {
+        border-style: solid;
+        font-size: 25px;
+        background: green;
+        padding: 20px
+    }
+</style>
+
+<body>
+    <button id="button" onclick="testOnclick()">Click me</button>
+    <hr>
+    <div id="contextMenu" oncontextmenu="testOncontextmenu()">Right Click me</div>
+    <hr>
+    <input id="onKeyDown" type="text" onkeydown="testOnkeydown()">
+    <p>Write in me!^</p>
+
+
+    <script>
+        function testOncontextmenu() {
+
+            alert("You right clicked me")
+            console.log("Context menu clicked")
+
+        }
+        function testOnclick() {
+            alert("you clicked the button")
+            console.log("Button Pressed")
+        }
+        function testOnkeydown() {
+            alert("Key Pressed")
+            console.log("Key typed in textbox")
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>låsekode</title>
+
+
+</head>
+
+<style>
+    .block {
+
+        width: 10%;
+        height: 10%;
+        background-color: royalblue;
+
+        cursor: pointer;
+
+
+    }
+
+
+
+    div {
+        float: left;
+
+
+
+    }
+
+    .teller {
+
+        border-style: dashed;
+
+
+    }
+</style>
+
+
+<body>
+    <center>
+
+
+        <button onclick="vis(this)" type="button" class="block">1</button>
+        <button onclick="vis(this)" type="button" class="block">2</button>
+        <button onclick="vis(this)" type="button" class="block">3</button>
+        <br>
+        <button onclick="vis(this)" type="button" class="block">4</button>
+        <button onclick="vis(this)" type="button" class="block">5</button>
+        <button onclick="vis(this)" type="button" class="block">6</button>
+        <br>
+        <button onclick="vis(this)" type="button" class="block">7</button>
+        <button onclick="vis(this)" type="button" class="block">8</button>
+        <button onclick="vis(this)" type="button" class="block">9</button>
+        <hr>
+    </center>
+    <center id="log" class="teller">Previous clicks = </center>
+
+
+    <script>
+        var output= document.getElementById("log");
+        function vis(telling) {
+            output.innerHTML += telling.innerHTML +'-' ;
+        }
+        
+        
+
+    </script>
+
+</body>
+
+
+
+
+
+</html>

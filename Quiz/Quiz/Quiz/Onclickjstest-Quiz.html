@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Quiz-Test</title>
+</head>
+<style>
+        body {
+            background-color: azure;
+
+                    
+
+        }
+        h3 {
+            border-style: solid;
+            float: left;
+            clear: left;
+            background-color: crimson;
+            font-size: larger;
+            padding: 20px;
+        }
+
+</style>
+<body>
+
+    <h2 id="spm">Hvem er statsminister i Norge</h2>
+    <hr>
+
+    <h3 onclick="svar1()">Torfin'Statsminister'Andersen</h3>
+    <h3 onclick="svar2()">Erna Solberg</h3>
+    <h3 onclick="svar3()">Donald Trump</h3>
+    
+    <script>
+        function svar1() {
+            document.getElementById('spm').innerHTML = 'Ikke helt';
+        }
+        function svar2() {
+            document.getElementById('spm').innerHTML = 'Gratulerer, Rktig Svar!!';
+        }
+        function svar3() { 
+            document.getElementById('spm').innerHTML = 'Nope!';        
+            }
+        
+    </script>
+</body>
+</html>
