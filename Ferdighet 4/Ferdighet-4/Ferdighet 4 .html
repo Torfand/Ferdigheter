@@ -8,13 +8,12 @@
 </head>
 
 <style>
-    body {
-        background-image: url(tyv.jpg);
-        background-repeat: no-repeat;
-        background-position: center center;
+    html {
+        background: url(tyv.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
         background-size: cover;
-
-
     }
 
     .block {
@@ -42,6 +41,8 @@
 
 
     }
+
+    
 </style>
 
 
@@ -61,14 +62,19 @@
         <button onclick="vis(this)" type="button" class="block">8</button>
         <button onclick="vis(this)" type="button" class="block">9</button>
         <hr>
+
     </center>
     <center id="log" class="teller">Previous clicks = </center>
 
 
     <script>
+
+        var output2 = document.getElementById("okay");
         var output = document.getElementById("log");
         function vis(telling) {
             output.innerHTML += telling.innerHTML + '-';
+
+
         }
 
 
