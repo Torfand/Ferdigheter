@@ -1,35 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>All them maths yo</title>
+    <title></title>
 </head>
+
 <body>
 
-    <input id="numb" type="range" min="1" max="100" step="1" oninput="maths()" value="2" />
-    <input id="numa" type="range" min="1" max="100" step="1" oninput="maths()" value="2" />
+    <h3>Endre høyde</h3>
+    <input id="longboi" type="range" min="1" max="1000" step="1"  oninput="ihatemath()" />
+    <div id="hteller"></div>
     <br>
-    <div id="result"></div> 
-    <script>
-        var total = document.getElementById("result");
-        var numInputA = document.getElementById("numa");
-        var numinputB = document.getElementById("numb");
+    <h3>Endre Bredde</h3>
+    <input id="fatboi" type="range" min="1" max="1000" step="1" oninput="ihatemath()" />
+  
+    <div id="bteller"> </div>
+    <br>
+    <hr>
+    <div id="show" style="width:500px;height:500px;border:3px solid orange;">
+        <br>
+        <p id="areal" />
+        <br />
+        <p id="omriss" />
+    </div>
+        
 
-        maths();
-        function maths() {
-            var numA = parseInt(numInputA.value);
-            var numB = parseInt(numInputB.value);
-            var total = numA + numB;
-            var subtract = numA - numB;
-            var multiply = numA * numB;
-            var divide = numA / numB;
-            equals.innerHTML = '' +
-                numA + '+' + numB + '=' + total + '<br/>' +
-                numA + '-' + numB + '=' + subtract + '<br/>' +
-                numA + '*' + numB + '=' + multiply + '<br/>' +
-                numA + '/' + numB + '=' + divide;
+
+
+
+
+    <script>
+        var longestboi = document.getElementById("longboi");
+        var fattestboi = document.getElementById("fatboi");
+        var show = document.getElementById("show");
+        var area = document.getElementById("areal");
+        var omriss = document.getElementById("omriss");
+        var hTeller= document.getElementById("hteller");
+        var bTeller = document.getElementById("bteller");
+
+        ihatemath();
+        function ihatemath() {
+
+
+            var height = parseInt(longestboi.value);
+            var width = parseInt(fattestboi.value);
+            var areatext = 'areal: ' + height *  width;
+            var roundtext = 'omkrets: ' + 2* height  +  2* width ;
+            hTeller.innerHTML = ' ' + height + '   høyde';
+            bTeller.innerHTML = ' ' + width + '  bredde' ;
+
+
+            areal.innerHTML = areatext;
+    
+            omriss.innerHTML = roundtext;
+            show.style.height = height + 'px';
+            show.style.widht = width + 'px';
+
         }
+
+        
+
+
     </script>
 </body>
 
