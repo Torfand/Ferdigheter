@@ -10,17 +10,25 @@
 <body>
     <h1>Ferdighet 6</h1>
     <input id="szSlider" type="range" min="100" max="500" step="10" oninput="showdiv()" />
-    <input id="bzSlider" tyoe ="range" min="100" max="500" steo="10" oninput="showdiv()"
+    <input id="bzSlider" type="range" min="1" max="10" step="1" oninput="showdiv()" />
     <br><input id="textBox" type="text" oninput="showdiv()" value="change text" />
     <select id="colorChoice" onchange="showdiv()">
         <option value="red">Red color </option>
         <option selected value="blue">Blue Color</option>
         <option value="green">Green Color</option>
     </select>
-    <select id="borderChoice" onchange="showdiv()">
-        <option value="black">Black Border</option>
+    <select id="borderColorChoice" onchange="showdiv()">
+        <option selected value="black">Black Border</option>
         <option value="gray">Gray Border</option>
-        <option value="none">No Border</option>
+
+    </select>
+    <select id="borderStyleChoice" onchange="showdiv()">
+
+        <option value="dashed">Dashed</option>
+        <option selected value="solid">Solid</option>
+        <option value="none">No border</option>
+
+
     </select>
     <div id="resultNonPage"></div>
     <div id="resultPage" style="font-family: monospace"></div>
@@ -32,9 +40,11 @@
         var sSlider = document.getElementById("szSlider");
         var txtin = document.getElementById("textBox");
         var cChoice = document.getElementById("colorChoice");
-        var bChoice = document.getElementById("borderChoice");
-        
-        
+
+        var bChoice = document.getElementById("borderColorChoice");
+        var bSlider = document.getElementById("bzSlider");
+        var bsChoice = document.getElementById("borderStyleChoice");
+
         showdiv();
 
         function showdiv() {
@@ -42,14 +52,23 @@
             var size = sSlider.value;
             var text = txtin.value;
             var color = cChoice.value;
-            var border = bChoice.value;
 
-            var borderColor = 'border-color: ' + border + ';' ;
+            var borderC = bChoice.value;
+            var border = bsChoice.value;
+            var bSize = bSlider.value;
+
+
             var backgroundColor = 'background-color: ' + color + ';';
+            var borderColor = borderC;
             var width = 'width: ' + size + 'px;';
+
             var height = 'height: ' + size + 'px;';
-            var style = 'style="' + backgroundColor + width + height + '"';
-            result.innerHTML = '<div ' + style + '>' + text + '</div>';
+
+            var BorderStyle = 'border:  ' + border + " " + borderC + " " + bSize + 'px;' ;
+
+            var style = 'style="' + backgroundColor + width + height + BorderStyle + '"';
+            console.log("hei", BorderStyle)
+            result.innerHTML = '<div ' + style + BorderStyle + '>' + text + '</div>';
             resultCode.innerText = result.innerHTML;
 
 
