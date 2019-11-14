@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+</head>
+
+<body>
+    <input id="numberOne" type="range" min="1" max="100" step="1" oninput="calc()" value="2">
+    <input id="numberTwo" type="range" min="1" max="100" step="1" oninput="calc()" value="2">
+    <div id="output"></div>
+    <script>
+        var inputOne = document.getElementById("numberOne");
+        var inputTwo = document.getElementById("numberTwo");
+        var output = document.getElementById("output");
+
+
+        calc();
+        function calc() {
+            var inOne = parseInt(inputOne.value);
+            var inTwo = parseInt(inputTwo.value);
+            var total = inOne + inTwo;
+            var subtract = inOne - inTwo;
+            var multiply = inOne * inTwo;
+            var divide = inOne / inTwo;
+            output.innerHTML = '' +
+                inOne + '+' + inTwo + '=' + total + '</br>' +
+                inOne + '-' + inTwo + '=' + subtract + '</br>' +
+                inOne + '*' + inTwo + '=' + multiply + '</br>' +
+                inOne + '/' + inTwo + '=' + divide;
+
+        }
+
+    </script>
+</body>
