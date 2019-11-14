@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>All them maths yo</title>
+
+</head>
+
+<body>
+    <h1>MAAAAAAAAATHHHHHHHHH =(</h1>
+    <input id="numa" type="range" min="1" max="1000" step="1" oninput="maths()" value="2" />
+    <input id="numb" type="range" min="1" max="1000" step="1" oninput="maths()" value="2" />
+    <br>
+    <div id="result"></div>
+
+    <script>
+        var equals = document.getElementById("result");
+        var numInputA = document.getElementById("numa");
+        var numinputB = document.getElementById("numb");
+
+        maths();
+
+
+
+        function maths() {
+
+            var numA = parseInt(numInputA.value);
+            var numB = parseInt(numInputB.value);
+
+            var total = numa + numb;
+            var subtract = numA - numB;
+            var multiply = numA * numB;
+            var divide = numB / numB;
+            equals.innerHTML = '' +
+                numA + '+' + numB + '=' + total + '<br/>' +
+                numA + '-' + numB + '=' + subtract + '<br/>' +
+                numA + '*' + numB + '=' + multiply + '<br/>' +
+                numA + '/' + numB + '=' + divide;
+        }
+
+
+
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+</html>
