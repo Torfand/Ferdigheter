@@ -14,55 +14,27 @@
 
 
     </style>
-
-
 </head>
-
-
-
-
 <body>
-
     <div id="borderproperties"> </div>
     <div id="pureText"></div>
-
-
-
-
-
-
     <script>
-
         var bProp = document.getElementById("borderproperties");
         var output = document.getElementById("pureText");
-
         calc()
-
-
-
         function calc() {
-
-
 
             var bProps = 10 + Math.floor(Math.random() * 100);
             var bPropW = 10 + Math.floor(Math.random() * 100);
-
             var height = 'height: ' + bProps + 'px' + ';';
             var width = ' width: ' + bPropW + 'px' + ';';
-            var lol  = bProps + 'px' ;
-            console.log(lol);
+            var lol = bProps + 'px';
+            var tot = 'border: ' + lol + ' solid black; ' + width + height;
+                bProp.style = tot;
+                output.innerHTML = tot;
 
-            var tot = 'border: ' + lol  + ' solid black; ' + width + height;
-
-
-
-            bProp.style = tot;
-            output.innerHTML = tot;
-            
 
         }
-
-
     </script>
 </body>
 
