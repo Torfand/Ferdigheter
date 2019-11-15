@@ -8,17 +8,14 @@
 
 
     <style>
-     #show {
+        #show {
 
 
-        background: orange;
+            background: orange;
 
 
 
-     }
-    
-    
-    
+        }
     </style>
 
 
@@ -30,60 +27,56 @@
 <body>
 
     <h3>Endre høyde</h3>
-    <input id="longboi" type="range" min="0" max="1000" step="1"  oninput="ihatemath()" />
+    <input id="longboi" type="range" value="1" min="0" max="1000" step="1" oninput="imnotgoodwithmaths()" />
     <div id="hteller"></div>
+
     <br>
+
     <h3>Endre Bredde</h3>
-    <input id="fatboi" type="range" min="0" max="1000" step="1" oninput="ihatemath()" />
-  
+    <input id="fatboi" type="range" value="1" min="0" max="1000" step="1" oninput="imnotgoodwithmaths()" />
     <div id="bteller"> </div>
     <br>
     <hr>
     <div id="show" style="width:500px;height:500px;border:3px solid fill orange ;">
         <br>
-        <p id="areal" />
+        <p id="areal"></p>
         <br />
-        <p id="omriss" />
-    </div>
-        
+        <p id="omriss"></p>
 
 
 
 
 
-    <script>
-        var longestboi = document.getElementById("longboi");
-        var fattestboi = document.getElementById("fatboi");
-        var show = document.getElementById("show");
-        var area = document.getElementById("areal");
-        var omriss = document.getElementById("omriss");
-        var hTeller= document.getElementById("hteller");
-        var bTeller = document.getElementById("bteller");
 
-        ihatemath();
-        function ihatemath() {
+        <script>
+            var longestboi = document.getElementById("longboi");
+            var fattestboi = document.getElementById("fatboi");
+            var show = document.getElementById("show");
+            var area = document.getElementById("areal");
+            var omriss = document.getElementById("omriss");
+            var hTeller = document.getElementById("hteller");
+            var bTeller = document.getElementById("bteller");
 
+            imnotgoodwithmaths();
+            function imnotgoodwithmaths() {
+                var height = parseInt(longestboi.value);
+                var width = parseInt(fattestboi.value);
+                var areatext = 'areal: ' + height * width + '  m²';
+                var roundtext = 'omkrets: ' +(height * 2 + width * 2);
+                hTeller.innerHTML = ' ' + height + ' høyde';
+                bTeller.innerHTML = ' ' + width; + ' bredde';
 
-            var height = parseInt(longestboi.value);
-            var width = parseInt(fattestboi.value);
-            var areatext = 'areal: ' + height *  width + '  m²';
-            var roundtext = 'omkrets: ' + height * 2 + width * 2;
-            hTeller.innerHTML = ' ' + height + ' høyde';
-            bTeller.innerHTML = ' ' + width; + ' bredde';
+                areal.innerHTML = areatext;
+                omriss.innerHTML = roundtext;
+                show.style.widht = width + 'px';
+                show.style.height = height + 'px';
 
-
-            areal.innerHTML = areatext;
-    
-            omriss.innerHTML = roundtext;
-            show.style.height = height + 'px';
-            show.style.widht = width + 'px';
-
-        }
-
-        
+            } 
 
 
-    </script>
+
+
+        </script>
 </body>
 
 
