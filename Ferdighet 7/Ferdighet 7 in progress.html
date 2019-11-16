@@ -34,16 +34,16 @@
 
     <h3>Endre Bredde</h3>
     <input id="fatboi" type="range" value="1" min="0" max="1000" step="1" oninput="imnotgoodwithmaths()" />
-    <div id="bteller"> </div>
+    <div id="bteller"></div>
     <br>
     <hr>
-    <div id="show" style="width:500px;height:500px;border:3px solid fill orange ;">
+    <div id="show" >
         <br>
         <p id="areal"></p>
         <br />
         <p id="omriss"></p>
 
-
+ 
 
 
 
@@ -56,22 +56,26 @@
             var omriss = document.getElementById("omriss");
             var hTeller = document.getElementById("hteller");
             var bTeller = document.getElementById("bteller");
-
+            
             imnotgoodwithmaths();
             function imnotgoodwithmaths() {
                 var height = parseInt(longestboi.value);
                 var width = parseInt(fattestboi.value);
                 var areatext = 'areal: ' + height * width + '  m²';
-                var roundtext = 'omkrets: ' +(height * 2 + width * 2);
-                hTeller.innerHTML = ' ' + height + ' høyde';
-                bTeller.innerHTML = ' ' + width; + ' bredde';
+                var roundtext = 'omkrets: ' + (2*height  + 2*width );
+                hTeller.innerHTML = height + ' høyde';
+                bTeller.innerHTML = width + ' bredde';
 
                 areal.innerHTML = areatext;
                 omriss.innerHTML = roundtext;
+                width =  'width ' +  width 
                 show.style.widht = width + 'px';
+                
                 show.style.height = height + 'px';
+                console.log(show.style.height)
+               
 
-            } 
+            }
 
 
 

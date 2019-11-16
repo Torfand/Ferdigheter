@@ -4,28 +4,35 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-
-
+    <title>Border Randomizer</title>
     <style>
 
-
-
-
+    body {
+        background-image: url(dice.jpg);
+            background-image: no-repeat;
+            background-size: cover;
+            background-size: fixed;
+            background-image: fixed;   
+            background-attachment: fixed;
+        
+    }
+    
+    
 
     </style>
 </head>
 <body>
+    
     <div id="borderproperties"> </div>
     <div id="pureText"></div>
     <script>
+        
         var bProp = document.getElementById("borderproperties");
         var output = document.getElementById("pureText");
         calc()
         function calc() {
-
-            var bProps = 10 + Math.floor(Math.random() * 100);
-            var bPropW = 10 + Math.floor(Math.random() * 100);
+            var bProps = 1 + Math.floor(Math.random() * 500);
+            var bPropW = 1 + Math.floor(Math.random() * 500);
             var height = 'height: ' + bProps + 'px' + ';';
             var width = ' width: ' + bPropW + 'px' + ';';
             var lol = bProps + 'px';
