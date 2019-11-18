@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <style>
+        .borderchange {
+
+            border: dotted;
+            display: inline;
+
+        }
+
+        .colorfill {
+
+            background-color: red;
+        }
+
+
+        .bold {
+            font-weight: bold;
+
+
+        }
+
+        .textcolor {
+
+            color: blue;
+
+        }
+    </style>
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div id="change1">Change me!!!!</div> <input id="div1" type="checkbox" onchange="selectCheckBox(this)" />
+    <hr>
+
+    <div id="change2">Change me!!!!</div> <input id="div2" type="checkbox" onchange="selectCheckBox(this)" />
+    <hr>
+    <input id="checkbox1" type="checkbox" onchange="toggleStyle(this)" />Border 
+    <br>
+    <input id="checkbox2" type="checkbox" onchange="toggleStyle(this)" /> Color fill 
+    <br>
+    <input id="checkbox3" type="checkbox" onchange="toggleStyle(this)" /> Blue text 
+    <br>
+    <input id="checkbox4" type="checkbox" onchange="toggleStyle(this)" /> Bold 
+    <br>
+    <script>
+            var checkEnabled;
+        function selectCheckBox(selected) {
+            if (selected.id == 'div1') { checkEnabled = "change1" }
+            if (selected.id == 'div2') { checkEnabled = "change2" } 
+        }
+        function toggleStyle(tickedbox) {
+            var stil;
+            if (tickedbox == checkbox1) { stil = 'borderchange'}
+            if (tickedbox == checkbox2) { stil = 'colorfill' }
+            if (tickedbox == checkbox3) { stil = 'bold' }
+            if (tickedbox == checkbox4) { stil = 'textcolor' }
+    
+            document.getElementById(checkEnabled).classList.toggle(stil);
+       
+        }       
+
+        
+
+
+
+
+        
+
+       
+        
+       
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>

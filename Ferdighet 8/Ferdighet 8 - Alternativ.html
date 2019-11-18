@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .changediv1style {
+
+            background-color: orangered;
+            color: papayawhip;
+            display: inline;
+        }
+
+        .changediv2style {
+
+            background-color: peru;
+            border: red dotted;  display: inline;
+            color: black
+           
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divchange1">her forandres effekter og Background på denne div!</div>
+    <div id="divchange2">her forandres også diverse effekter</div>
+    <hr>
+    <input id="firstchckbx" type="checkbox" onchange="togglechangestyle()">
+    <input id="secondchckbx" type="checkbox" onchange="togglechangestyle2()">
+    
+
+    <script>
+
+        function togglechangestyle() {
+            var checboxTicked = document.getElementById('firstchckbx').checked;
+            var bordercheck = document.getElementById("bordercheck").checked;
+
+            document.getElementById('divchange1').classList.toggle('changediv1style', checboxTicked);
+
+
+             }
+
+            function togglechangestyle2() {
+                var checboxTicked2 = document.getElementById('secondchckbx').checked;
+                document.getElementById('divchange2').classList.toggle('changediv2style', checboxTicked2);
+                
+
+
+            }
+
+
+    </script>
+
+
+
+
+</body>
+
+
+</html>
