@@ -71,13 +71,12 @@
             
         }
         function toggleStyle(tickedbox) {
-            var stil;
-            if (tickedbox == checkbox1) { stil = 'borderchange'}
-            if (tickedbox == checkbox2) { stil = 'colorfill' }
-            if (tickedbox == checkbox3) { stil = 'bold' }
-            if (tickedbox == checkbox4) { stil = 'textcolor' }
-            console.log("div1")
-            document.getElementById(checkEnabled).classList.toggle(stil);
+            var stylize;
+            if (tickedbox == checkbox1) { stylize = 'borderchange'}
+            if (tickedbox == checkbox2) { stylize = 'colorfill' }
+            if (tickedbox == checkbox3) { stylize = 'bold' }
+            if (tickedbox == checkbox4) { stylize = 'textcolor' }
+            document.getElementById(checkEnabled).classList.toggle(stylize);
        
         }       
 
