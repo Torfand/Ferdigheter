@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <style>
+        .borderchange {
+
+            border: dotted;
+            display: inline;
+
+        }
+
+        .colorfill {
+
+            background-color: red;
+        }
+
+
+        .bold {
+            font-weight: bold;
+
+
+        }
+
+        .textcolor {
+
+            color: blue;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="change1">Change me!!!!</div> <input id="div1" type="checkbox" onchange="toggleStyle1(this)" />
+    <hr>
+
+    <div id="change2">Change me!!!!</div> <input id="div2" type="checkbox" onchange="toggleStyle1(this)" />
+    <hr>
+    <input id="checkbox1" type="checkbox" onchange="toggleStyle1(this)" />Border 
+    <br>
+    <input id="checkbox2" type="checkbox" onchange="toggleStyle1(this)" /> Color fill 
+    <br>
+    <input id="checkbox3" type="checkbox" onchange="toggleStyle1(this)" /> Blue text 
+    <br>
+    <input id="checkbox4" type="checkbox" onchange="toggleStyle1(this)" /> Bold 
+    <br>
+    <script>
+        function toggleStyle1() {
+            var div1Enabled = document.getElementById('div1').checked;
+            var div2Enabled = document.getElementById('div2').checked;
+            var isEnabled = document.getElementById('checkbox1').checked;
+            var isEnabled2 = document.getElementById('checkbox2').checked;
+            var isEnabled3 = document.getElementById('checkbox3').checked;
+            var isEnabled4 = document.getElementById('checkbox4').checked;
+                document.getElementById('change1',).classList.toggle('borderchange', div1Enabled && isEnabled,);
+                document.getElementById('change1').classList.toggle('colorfill', div1Enabled && isEnabled2);
+                document.getElementById('change1').classList.toggle('textcolor', div1Enabled && isEnabled3);
+                document.getElementById('change1').classList.toggle('bold', div1Enabled && isEnabled4);
+            
+                //Div2
+                document.getElementById('change2',).classList.toggle('borderchange', div2Enabled && isEnabled,);
+                document.getElementById('change2').classList.toggle('colorfill', div2Enabled && isEnabled2);
+                document.getElementById('change2').classList.toggle('textcolor', div2Enabled && isEnabled3);
+                document.getElementById('change2').classList.toggle('bold', div2Enabled && isEnabled4);
+            
+       
+       
+        }       
+
+       
+        
+       
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>
