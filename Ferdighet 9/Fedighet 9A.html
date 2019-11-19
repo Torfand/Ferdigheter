@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+
+
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div id="divA" style="border: 5px solid black; display: inline;" onclick="selected(this)">A</div>
+    <br>
+    <br />
+    <hr>
+    <div id="divB" style="border: 5px dotted crimson; display: inline;" onclick="selected(this)">B</div>
+    <br />
+    <br />
+    <br />
+    <hr>
+    <input id="sliderH" type="range" min="1" max="100" step="1" oninput="calculate(this)" value="1" />-Høyde
+    <input id="sliderB" type="range" min="1" max="100" step="1" oninput="calculate(this)" value="1" />-Bredde
+    <hr>
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr>
+    <div id="resultA"></div>
+    <div id="resultB"></div>
+    <br />
+    <div id="resultat3"></div>
+
+    <script>
+
+
+        var resultatDiv = document.getElementById('resultA');
+        var resultatDiv3 = document.getElementById('resultat3');
+        var sliderHin = document.getElementById('sliderH');
+        var sliderbin = document.getElementById('sliderB');
+        var selectedDiv;
+        var resultatDiv2 = document.getElementById('resultB');
+        var arealA;
+        var arealB;
+        function selected(selected1) { selectedDiv = selected1.id }
+        calculate();
+
+        function calculate() {
+
+            if (selectedDiv == 'divA') {
+                var height = parseInt(sliderHin.value);
+                var width = parseInt(sliderbin.value);
+                arealA = width * height;
+                resultatDiv.innerHTML = "areal av div-A: " + arealA;        
+            }   
+            if (selectedDiv == 'divB') {
+                var height = parseInt(sliderHin.value);
+                var width = parseInt(sliderbin.value);
+                arealB = width * height;
+                resultatDiv2.innerHTML = "areal av div-B: " + arealB;
+                 
+                
+            }   
+            
+        biggestnbest()
+       
+        }
+        function biggestnbest() {
+            if (arealA > arealB) {
+                resultatDiv3.innerHTML = '<b>A</b> er størst'
+            }
+            else if (arealB > arealA) {
+                resultatDiv3.innerHTML = '<b>B</b> er størst'
+            }
+        } 
+
+    </script>
+</body>
+
+</html>
