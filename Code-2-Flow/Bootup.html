@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+
+<body onload="load()">
+    
+<h2 id="inout1"></h2>
+<input id="testinput" type="text" onkeydown="boot(this)">
+
+
+    
+</body>
+<script>
+
+var inOut1 = document.getElementById("inout1")
+var testinput = document.getElementById("testinput")
+
+   
+   
+   
+   
+    function load() {
+      var innout= inOut1
+        setTimeout(function(){innout.innerHTML= 'Booting from Drive, press f1 for additional options' ; }, 3);
+        setTimeout(function(){innout.innerHTML= 'Booting from hard-drive' ; }, 10000)
+        setTimeout(function(){innout.innerHTML= 'booted' ; }, 10000)
+        
+         }
+     function boot(bootmenu) {  
+        document.getElementById('inout1').innerHTML = 'BootMenu'
+        if(bootmenu == testinput) {
+            testinput.style.display = "none"
+        }
+}
+
+
+
+</script>
+
+
+</html>
