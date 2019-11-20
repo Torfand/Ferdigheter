@@ -18,7 +18,7 @@
     <h2 id="out1"></h2>
     <div id="out"></div>
     <button id="vips" onclick="cost(this)"></button>
-    <button id="vips2"onclick="cost(this)"></button>
+    <button id="vips2" onclick="cost(this)"></button>
     <button id="kontant2" onclick="cost(this)"></button>
     <button id="kontant" onclick="cost(this)"></button>
     <button id="kort" onclick="cost(this)"></button>
@@ -44,7 +44,7 @@
     var pressed;
     cost();
 
- // on-Load funcksjon
+    // on-Load funcksjon
     function load() {
         var output1 = out1;
         var output2 = out;
@@ -63,7 +63,7 @@
         var output1 = out1;
         var output2 = out;
 
-            // kontant betaling valgt
+        // kontant betaling valgt
         if (payment == kontant) {
             output1.innerHTML = '100 kr takk';
             output2.innerHTML = ' Gi kontanter? ';
@@ -72,17 +72,17 @@
             kontant.style.display = "none";
             kontant2.innerHTML = 'Gi 100krs Lapp'
             kontant2.style.display = "initial";
-            vips.style.display ="none"
+            vips.style.display = "none"
 
         }
 
         if (payment == kontant2) {
-            output2.innerHTML ="Takk"
+            output2.innerHTML = "Takk"
             output1.innerHTML = "Takk"
             kontant2.innerHTML = "Takk"
-            vips.style.display ="none"
+            vips.style.display = "none"
         }
-            //Kort betaling valgt
+        //Kort betaling valgt
         else if (payment == kort) {
             output1.innerHTML = '100 kr';
             output2.innerHTML = ' Betale med kort? ';
@@ -91,42 +91,42 @@
             kort.style.display = "none"
             kort2.innerHTML = "Putt in kort og tast pin"
             kort2.style.display = "initial"
-            vips.style.display ="none"
-            
+            vips.style.display = "none"
+
         }
 
         else if (payment == kort2) {
-            output2.innerHTML ="Takk"
+            output2.innerHTML = "Takk"
             output1.innerHTML = "Takk"
             kort2.innerHTML = "Takk"
-            vips.style.display ="none"
-            alert ("takk for penga!")
+            vips.style.display = "none"
+            alert("takk for penga!")
 
         }
 
         //  vips valgt
         else if (payment == vips) {
             output1.innerHTML = "Vips nummer er - 97863736 (bare og gi meg penger)"
-            output2.innerHTML  =  "Vips over penger?"
+            output2.innerHTML = "Vips over penger?"
             //gjemmer/viser elementer
             vips2.innerHTML = "Ja"
             kontant.style.display = "none"
-            kort.style.display ="none"
-            vips.style.display ="none"
-            vips2.style.display= "initial"
-            
-            }
+            kort.style.display = "none"
+            vips.style.display = "none"
+            vips2.style.display = "initial"
+
+        }
 
 
-       else if (payment == vips2)    {
-            output2.innerHTML ="Takk"
+        else if (payment == vips2) {
+            output2.innerHTML = "Takk"
             output1.innerHTML = "Takk"
             vips2.innerHTML = "Takk"
-            vips.style.display ="none"
-            alert ("takk for penga!")
+            vips.style.display = "none"
+            alert("takk for penga!")
 
 
-       } 
+        }
     }
 
 
