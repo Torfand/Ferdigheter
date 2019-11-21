@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="infoOutput"></div>
+    <br>
+    <input type="text" id="txt1" oninput="find()" value="lars" />
+    <br>
+    <input type="text" id="txt2" oninput="find()" value="karl" />
+    <br>
+    <input type="text" id="txt3" oninput="find()" value="abradolf linkler" />
+    <br>
+    <input type="text" id="txt4" oninput="find()" value ="luremusmcstasjonsnavn">
+
+</body>
+
+
+<script>
+var output = document.getElementById("infoOutput") ;
+var text1 = document.getElementById("txt1");
+var text2 = document.getElementById("txt2") ;
+var text3 =  document.getElementById("txt3") ;
+var text4 = document.getElementById("txt4");
+
+find();
+function find(){
+    var txt1 = text1.value;
+    var txt2 = text2.value;
+    var txt3 = text3.value;
+    var txt4 = text4.value;
+console.log =(output)
+
+ output.innerHTML = '    Sortering' + ':' + '<br>' ;
+
+ if (txt1 <= txt2 && txt1 <= txt3 && txt1 <= txt4) output.innerHTML += txt1;
+ else if (txt2 <= txt3 && txt2 <= txt4 ) output.innerHTML += txt2;
+ else if (txt3 <= txt4)output.innerHTML += txt3;
+else output.innerHTML += txt4;
+
+
+
+}
+
+</script>
+</html>
