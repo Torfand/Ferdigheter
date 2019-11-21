@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+
+            width: 100px;
+            height: 100px;
+
+
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div id="a" onclick="clickMe(this)" style="background-color: crimson">A</div>
+    <div id="b" onclick="clickMe(this)" style="background-color: pink">B</div>
+    <div id="c" onclick="clickMe(this)" style="background-color:green">C</div>
+    <div id="info" onclick="clickMe(this)">Click away</div>
+</body>
+<script>
+
+    var infohere = document.getElementById("info");
+    var boxA = document.getElementById("a");
+    var boxB = document.getElementById("b");
+    var boxC = document.getElementById("c");
+    var previousClick;
+    var buttonBeforeLastClicked;
+    var anotherclick;
+
+    function clickMe(buttonClicked) {
+        buttonBeforeLastClicked = previousClick; 
+        previousClick = anotherclick;
+        anotherclick = buttonClicked;
+        infohere.innerHTML = 'Du har trykket på firkant     ' + buttonClicked.innerHTML
+       
+       
+       
+        if (buttonClicked == previousClick) {
+            infohere.innerHTML += '<br>' + '( trykket på den samme) ' ;
+        }
+        
+
+        if (buttonBeforeLastClicked == anotherclick) {
+            infohere.innerHTML +=  '<br>' + '  (samme som for 2 ganger siden)';
+        }
+
+            infohere.innerHTML +=  '<br>' + '<br>' + previousClick.innerHTML  + '-' +   buttonBeforeLastClicked.innerHTML ;
+
+        
+
+
+        
+
+        console.log(buttonBeforeLastClicked, buttonClicked, previousClick)
+    }
+
+
+</script>
+
+</html>
