@@ -6,39 +6,74 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
-
-
 <body onload="load()">
-    
-<h2 id="inout1"></h2>
-<input id="testinput" type="text" onkeydown="boot(this)">
-
-
-    
+    <h2 id="inout1"></h2>
+    <input id="testinput" type="text" onkeydown="boot(this)">
+    <button id="network" onclick="boot(this)">Boot from Network</button>
+    <button id="cdROM" onclick="boot(this)">Boot from CD-ROM</button>
+    <button id="y" onclick="boot(this)">Yes</button>
+    <button id="n" onclick="boot(this)">No</button>
 </body>
 <script>
 
-var inOut1 = document.getElementById("inout1")
-var testinput = document.getElementById("testinput")
+    var inOut1 = document.getElementById("inout1");
+    var testinput = document.getElementById("testinput");
+    var networkbtn = document.getElementById("network");
+    var cdROM = document.getElementById("cdROM");
+    var ybtn = document.getElementById("y");
+    var nbtn = document.getElementById("n");
 
-   
-   
-   
-   
+
     function load() {
-      var innout= inOut1
-        setTimeout(function(){innout.innerHTML= 'Booting from Drive, press f1 for additional options' ; }, 3);
-        setTimeout(function(){innout.innerHTML= 'Booting from hard-drive' ; }, 10000)
-        setTimeout(function(){innout.innerHTML= 'booted' ; }, 10000)
-        
-         }
-     function boot(bootmenu) {  
-        document.getElementById('inout1').innerHTML = 'BootMenu'
-        if(bootmenu == testinput) {
-            testinput.style.display = "none"
+        var innout = inOut1;
+        networkbtn.style.display = "none";
+        cdROM.style.display = "none";
+        ybtn.style.display = "none";
+        nbtn.style.display = "none";
+        inOut1.innerHTML = "press f1";
+
+
+    }
+    function boot(bootmenu) {
+
+        document.getElementById('inout1').innerHTML = 'BootMenu';
+        if (bootmenu == testinput) {
+            testinput.style.display = "none";
+            networkbtn.style.display = "initial";
+            cdROM.style.display = "initial";
         }
-}
+        if (bootmenu == networkbtn) {
+            inOut1.innerHTML = "booting from network";
+            cdROM.style.display = "none";
+            networkbtn.style.display = "none";
+            setTimeout(function () { inOut1.innerHTML = 'Booted from network' }, 3000);
+        }
+
+        if (bootmenu == cdROM) {
+            inOut1.innerHTML = ' Boot from cd rom?';
+            cdROM.style.display = "none";
+            networkbtn.style.display = "none";
+            ybtn.style.display = "initial";
+            nbtn.style.display = "initial";
+        }
+        if (bootmenu == ybtn) {
+            inOut1.innerHTML = "Booting from CD-ROM";
+            setTimeout(function () { inOut1.innerHTML = 'Booted from CD-ROM' }, 3000);
+            ybtn.style.display = "none";
+            nbtn.style.display = "none";
+
+        }
+        if(bootmenu == nbtn) {
+            inOut1.innerHTML ="No boot type selected, Booting from default";
+            setTimeout(function () { inOut1.innerHTML = 'Booted' }, 6000);
+            ybtn.style.display = "none"
+            nbtn.style.display = "none"
+                }
+            
+
+    }
+
+
 
 
 
