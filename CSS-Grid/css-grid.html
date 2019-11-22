@@ -19,8 +19,8 @@
             grid-template-columns: 1fr 3fr;
             grid-template-rows: 2fr 10fr 1px;
             grid-template-areas: ' header header'
-                'menu content'
-                'footer footer';
+                                'menu content'
+                                'footer footer';
 
         }
 
@@ -81,7 +81,7 @@
 
 
 
-        @media only screen and (max-width: 400px) {
+        @media only screen and (max-width: 100px) {
             div.page {
                 grid-template-columns: 1fr;
                 grid-template-rows: 10px 1fr 1fr;
@@ -110,7 +110,7 @@
             <br>
             <br>
             <button id="showhide" onclick="toggleVisibility()">Show/Hide sidemenu</button>
-</h1>
+            </h1>
 
         <div class="menu" style="font-size: 30px; " > Menu 
             <br>
@@ -144,7 +144,7 @@
 
 
 
-
+            
 
         <div class="footer"> Footer </div>
 
@@ -161,21 +161,19 @@
         let aValue;
         let bValue;
         let togglemenu = document.getElementById("hei");
-
+      
         function selectedV(selected) {
            //Denne funskjonen henter ut valuen av selector a, og putter det inn i variabelen "aValue"
             aValue = selected.value;
             total(); }
-
         function selectedVB(selected) {
             //Denne funskjonen henter ut valuen av selector b, og putter det inn i variabelen "bValue"
             bValue = selected.value;
-            
-            total();}
+             total();}
             total();
-
+  console.log(aValue, bValue)
             function total() {
-                console.log(bValue, aValue, output)
+                
                 //Her setter jeg hvilke resultat du får om du har valgt Arsene på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
             if (aValue == 'none' && bValue == 'none') { output.innerHTML = ' ' };
             if (aValue == 'Arsene' && bValue == 'Arsene') { output.innerHTML = "Not avaliable as a fuse option" };
