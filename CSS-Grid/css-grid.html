@@ -25,22 +25,40 @@
         }
 
         h1.header {
-                background-image: url("p5.png");
+            background-image: url("p5.png");
             background-size: cover;
             grid-area: header;
             color: whitesmoke;
-            font-family: Lucida ; 
+            text-shadow:
+                         3px 3px 0 #000,
+                        -1px -1px 0 #000,  
+                         1px -1px 0 #000,
+                             -1px 1px 0 #000,
+                             1px 1px 0 #000;
+            font-family: Lucida;
             padding: 0%;
             margin: 0%;
         }
 
         div.menu {
-
+            background-image: url("p5-menu.jpg");
+            background-size: cover;
             grid-area: menu;
+            background-repeat: no-repeat;
+            color:white;
+            text-shadow:
+                         3px 3px 0 #000,
+                        -1px -1px 0 #000,  
+                         1px -1px 0 #000,
+                             -1px 1px 0 #000,
+                             1px 1px 0 #000;
+            font-family: Lucida;
+            text-decoration: underline;
         }
 
         div.content {
-            align-items: center;
+            
+            
             grid-area: content;
         }
 
@@ -48,16 +66,22 @@
 
             grid-area: footer;
         }
-      
-           
+        
 
 
 
 
-       
+
+        
 
 
-        @media only screen and (max-width: 600px) {
+
+
+
+
+
+
+        @media only screen and (max-width: 400px) {
             div.page {
                 grid-template-columns: 1fr;
                 grid-template-rows: 10px 1fr 1fr;
@@ -66,17 +90,10 @@
                     'menu'
                     'content'
                     'footer'
-                ;
-
-
-
-
-
-
-            }
-
-
-        }
+                } 
+                }
+       
+  
     </style>
 
 
@@ -89,26 +106,30 @@
 
 <body>
     <div class="page">
-        <h1 class="header"> Persona 5 Fuse Compendium </h1>
+        <h1 class="header"> Persona 5 Fuse Compendium 
+            <br>
+            <br>
+            <button id="showhide" onclick="toggleVisibility()">Show/Hide sidemenu</button>
+</h1>
 
+        <div class="menu" style="font-size: 30px; " > Menu 
+            <br>
+            
+        
+        
+        
+        </div>
+        
+                    
 
-
-
-        <div class="menu"> Menu </div>
-
-
-
-
-
-
-
-        <div class="content">
-            <select id ="selectorA" onchange="selectedV(this)" >
+            <div class="content"> Select Persona from dropdown
+            <select id="selectorA" onchange="selectedV(this)">
                 <option>none</option>
                 <option>Arsene</option>
                 <option>Jack-o-Lantern</option>
                 <option>Pixie</option>
                 <option>Incubus</option>
+                <option></option>
             </select>
             <select id="selectorB" onchange="selectedVB(this)">
                 <option>none</option>
@@ -116,8 +137,9 @@
                 <option>Jack-o-Lantern</option>
                 <option>Pixie</option>
                 <option>Incubus</option>
+                <option></option>
             </select>
-            <div id = "outputDiv" style="font-size: 30px; "></div>
+            <div id="outputDiv" style="font-size: 30px; "></div>
         </div>
 
 
@@ -134,57 +156,55 @@
 
     </div>
     <script>
-       let imgOut = document.getElementById ("imgout")
+        // Her lager jeg Variablene "output", aValue, og bValue + sier at outputDiv sin innerhtml er i output variablen 
         let output = document.getElementById("outputDiv");
         let aValue;
         let bValue;
-       
-        function selectedV(selected) {
-             aValue = selected.value ;
+        let togglemenu = document.getElementById("hei");
 
-             total();
-            
-                
-                
-            
-        }
+        function selectedV(selected) {
+           //Denne funskjonen henter ut valuen av selector a, og putter det inn i variabelen "aValue"
+            aValue = selected.value;
+            total(); }
 
         function selectedVB(selected) {
-
+            //Denne funskjonen henter ut valuen av selector b, og putter det inn i variabelen "bValue"
             bValue = selected.value;
-
+            
+            total();}
             total();
 
+            function total() {
+                console.log(bValue, aValue, output)
+                //Her setter jeg hvilke resultat du får om du har valgt Arsene på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+            if (aValue == 'none' && bValue == 'none') { output.innerHTML = ' ' };
+            if (aValue == 'Arsene' && bValue == 'Arsene') { output.innerHTML = "Not avaliable as a fuse option" };
+            if (aValue == 'Arsene' && bValue == 'Jack-o-Lantern') { output.innerHTML = "Mandrake" + '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> " };
+            if (aValue == 'Arsene' && bValue == 'Pixie') { output.innerHTML = "Agathion" + '<br>' +"<img src='Agathion.png' height='200' width='200': <img> " };
+            if (aValue == 'Arsene' && bValue == 'Incubus') { output.innerHTML = "Slime"  + '<br>' + "<img src='slime.jpg' height='200' width='200': <img> " };
+                //Her setter jeg hvilke resultat du får om du har valgt Jack-o-Lantern på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Arsene') { output.innerHTML = "Mandrake" + '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> " };
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Jack-o-Lantern') { output.innerHTML = "Not avaliable as a fuse option" };
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Pixie') { output.innerHTML = "Incubus"   };
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Incubus') { output.innerHTML = "Berith" };
+                 //Her setter jeg hvilke resultat du får om du har valgt Pixie på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+            if (aValue == 'Pixie' && bValue == 'Arsene') { output.innerHTML = 'Agathion' };
+            if (aValue == 'Pixie' && bValue == 'Jack-o-Lantern') { output.innerHTML = 'Incubus' };
+            if (aValue == 'Pixie' && bValue == 'Pixie') { output.innerHTML = "Not avaliable as a fuse option" };
+            if (aValue == 'Pixie' && bValue == 'Incubus') { output.innerHTML = "Succubus" };
+                //Her setter jeg hvilke resultat du får om du har valgt Incubus på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+            if (aValue == 'Incubus' && bValue == 'Arsene') { output.innerHTML = "Not avaliable as a fuse option" };
+            if (aValue == 'Incubus' && bValue == 'Jack-o-Lantern') { output.innerHTML = "Pixie" };
+            if (aValue == 'Incubus' && bValue == 'Pixie') { output.innerHTML = "Not avaliable as a fuse option" };
+            if (aValue == 'Incubus' && bValue == 'Incubus') { output.innerHTML = "Not avaliable as a fuse option" };
+                //DRY THOOOOOO!!!
+            
+
+
+
+
         }
-
-             total();
-
-        function total() {
-           
-            if (aValue == 'none' && bValue== 'none') {output.innerHTML = ' '}
-            if (aValue == 'Arsene' && bValue == 'Arsene' ) { output.innerHTML ="Not avaliable as a fuse option"}
-            if (aValue == 'Arsene' && bValue == 'Jack-o-Lantern' ) { output.innerHTML ="Mandrake" +  '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> "};
-            if (aValue == 'Arsene' && bValue == 'Pixie' ) {output.innerHTML ="Agathion"}
-            if (aValue == 'Arsene' && bValue == 'Incubus') {output.innerHTML ="Slime"}
-            if (aValue == 'Jack-o-Lantern' && bValue == 'Arsene' ) { output.innerHTML ="Mandrake" +  '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> "};
-            if (aValue == 'Jack-o-Lantern' && bValue == 'Jack-o-Lantern') { output.innerHTML ="Not avaliable as a fuse option"}
-            if (aValue == 'Jack-o-Lantern' && bValue == 'Pixie') {output.innerHTML ="Incubus"}
-            if (aValue == 'Jack-o-Lantern' && bValue == 'Incubus'){output.innerHTML ="Berith"}
-            if (aValue == 'Pixie' && bValue == 'Arsene') {output.innerHTML = 'Agathion'}
-            if (aValue == 'Pixie' && bValue == 'Jack-o-Lantern') {output.innerHTML = 'Incubus'}
-            if (aValue == 'Pixie' && bValue == 'Pixie') {output.innerHTML = "Not avaliable as a fuse option"}
-            if (aValue == 'Pixie' && bValue == 'Incubus') {output.innerHTML = "Succubus"}
-            if (aValue == 'Incubus' && bValue == 'Arsene') {output.innerHTML = "Not avaliable as a fuse option"}
-            if (aValue == 'Incubus' && bValue == 'Jack-o-Lantern') {output.innerHTML = "Pixie"}
-            if (aValue == 'Incubus' && bValue == 'Pixie') {output.innerHTML = "Not avaliable as a fuse option"}
-            if (aValue == 'Incubus' && bValue == 'Incubus') {output.innerHTML = "Not avaliable as a fuse option"}
-
-
-
-
-           
-        }
-        
+       
 
 
 
