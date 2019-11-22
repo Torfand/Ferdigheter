@@ -36,7 +36,7 @@
         border-style: dashed;
         font-size: 225%;
         background-size: cover;
-        color: honeydew;
+        color: black
 
 
 
@@ -63,30 +63,33 @@
 
     </center>
     <center id="log" class="teller"></center>
+    <center id="log2" class="teller"></center>
 
 
     <script>
         var correctInput = '3812';
         var output = document.getElementById("log");
+        var output2 = document.getElementById("log2") ;
         var currentCode;
         
 
         function vis(telling) {
-        
+      // debugger;
         output.innerHTML += telling.innerHTML + '';
             currentCode = output.innerHTML;
                console.log(currentCode, correctInput)  ;
                
                 if (currentCode == correctInput) {
-                    output.innerHTML = 'Open';
+                    output2.innerHTML = 'Open';
                      
                     } 
-        
-                    if (currentCode.length == 5) {
-                correctInput = '';
+             
+                    if (currentCode.length >= 5) {
+                
                 output.innerHTML = '';
+                output2.innerHTML = '';
             }
-        
+           
          }
 
 

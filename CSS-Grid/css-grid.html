@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>blabla</title>
+    <style>
+        body {
+            padding: 0%;
+            margin: 0%;
+        }
+
+
+        div.page {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: 2fr 10fr 1px;
+            grid-template-areas: ' header header'
+                'menu content'
+                'footer footer';
+
+        }
+
+        h1.header {
+                background-image: url("p5.png");
+            background-size: cover;
+            grid-area: header;
+            color: whitesmoke;
+            font-family: Lucida ; 
+            padding: 0%;
+            margin: 0%;
+        }
+
+        div.menu {
+
+            grid-area: menu;
+        }
+
+        div.content {
+            align-items: center;
+            grid-area: content;
+        }
+
+        div.footer {
+
+            grid-area: footer;
+        }
+      
+           
+
+
+
+
+       
+
+
+        @media only screen and (max-width: 600px) {
+            div.page {
+                grid-template-columns: 1fr;
+                grid-template-rows: 10px 1fr 1fr;
+                grid-template-areas:
+                    'header'
+                    'menu'
+                    'content'
+                    'footer'
+                ;
+
+
+
+
+
+
+            }
+
+
+        }
+    </style>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <div class="page">
+        <h1 class="header"> Persona 5 Fuse Compendium </h1>
+
+
+
+
+        <div class="menu"> Menu </div>
+
+
+
+
+
+
+
+        <div class="content">
+            <select id ="selectorA" onchange="selectedV(this)" >
+                <option>none</option>
+                <option>Arsene</option>
+                <option>Jack-o-Lantern</option>
+                <option>Pixie</option>
+                <option>Incubus</option>
+            </select>
+            <select id="selectorB" onchange="selectedVB(this)">
+                <option>none</option>
+                <option>Arsene</option>
+                <option>Jack-o-Lantern</option>
+                <option>Pixie</option>
+                <option>Incubus</option>
+            </select>
+            <div id = "outputDiv" style="font-size: 30px; "></div>
+        </div>
+
+
+
+
+
+        <div class="footer"> Footer </div>
+
+
+
+
+
+
+
+    </div>
+    <script>
+       let imgOut = document.getElementById ("imgout")
+        let output = document.getElementById("outputDiv");
+        let aValue;
+        let bValue;
+       
+        function selectedV(selected) {
+             aValue = selected.value ;
+
+             total();
+            
+                
+                
+            
+        }
+
+        function selectedVB(selected) {
+
+            bValue = selected.value;
+
+            total();
+
+        }
+
+             total();
+
+        function total() {
+           
+            if (aValue == 'none' && bValue== 'none') {output.innerHTML = ' '}
+            if (aValue == 'Arsene' && bValue == 'Arsene' ) { output.innerHTML ="Not avaliable as a fuse option"}
+            if (aValue == 'Arsene' && bValue == 'Jack-o-Lantern' ) { output.innerHTML ="Mandrake" +  '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> "};
+            if (aValue == 'Arsene' && bValue == 'Pixie' ) {output.innerHTML ="Agathion"}
+            if (aValue == 'Arsene' && bValue == 'Incubus') {output.innerHTML ="Slime"}
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Arsene' ) { output.innerHTML ="Mandrake" +  '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> "};
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Jack-o-Lantern') { output.innerHTML ="Not avaliable as a fuse option"}
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Pixie') {output.innerHTML ="Incubus"}
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Incubus'){output.innerHTML ="Berith"}
+            if (aValue == 'Pixie' && bValue == 'Arsene') {output.innerHTML = 'Agathion'}
+            if (aValue == 'Pixie' && bValue == 'Jack-o-Lantern') {output.innerHTML = 'Incubus'}
+            if (aValue == 'Pixie' && bValue == 'Pixie') {output.innerHTML = "Not avaliable as a fuse option"}
+            if (aValue == 'Pixie' && bValue == 'Incubus') {output.innerHTML = "Succubus"}
+            if (aValue == 'Incubus' && bValue == 'Arsene') {output.innerHTML = "Not avaliable as a fuse option"}
+            if (aValue == 'Incubus' && bValue == 'Jack-o-Lantern') {output.innerHTML = "Pixie"}
+            if (aValue == 'Incubus' && bValue == 'Pixie') {output.innerHTML = "Not avaliable as a fuse option"}
+            if (aValue == 'Incubus' && bValue == 'Incubus') {output.innerHTML = "Not avaliable as a fuse option"}
+
+
+
+
+           
+        }
+        
+
+
+
+
+    </script>
+</body>
+
+</html>

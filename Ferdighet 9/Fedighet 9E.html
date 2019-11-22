@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .colorblack {
+            background-color: black;
+            color: white;
+        }
+
+        .colorDBlue {
+            background-color: darkblue;
+            color: white;
+        }
+
+        .colorLGray {
+            background-color: lightgray
+        }
+
+        .colorLGreen {
+            background-color: lightgreen;
+        }
+
+        .colorLred {
+            background-color: lightcoral;
+        }
+    </style>
+
+
+
+</head>
+
+
+
+
+
+<body>
+    <select id="collorselector" onchange="magic(this)">
+        <option></option>none</option>
+        <option id="black" onchange="magic()">Black</option>
+        <option id="dblue" onchange="magic()">Dark Blue</option>
+        <option id="gray" onchange="magic()">Light Gray</option>
+        <option id="lgreen" onchange="magic()">Light Green</option>
+        <option id="lred" onchange="magic()"> Light Red</option>
+    </select>
+
+    <br>
+    <hr>
+    <div id="coloroutput">Hello!</div>
+
+</body>
+
+<script>
+    var colorchange = document.getElementById("collorselector")
+    var output = document.getElementById("coloroutput")
+    var black = document.getElementById("black")
+    var darkBlue = document.getElementById("dblue")
+    var lightGray = document.getElementById("gray")
+    var lightGreen = document.getElementById("lgreen")
+    var lightRed = document.getElementById("lred")
+
+    
+
+    function magic() {
+        if (colorchange && black) {
+            document.getElementById('coloroutput').classList.add('colorblack');}
+ 
+    }
+
+
+
+    
+
+
+
+
+
+</script>
+
+</html>
