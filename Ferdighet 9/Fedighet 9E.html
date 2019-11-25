@@ -8,25 +8,27 @@
     <title>Document</title>
 
     <style>
-    
-        
+  
     </style>
 
 
 
-</head>
-<body>
-    <select onchange="togglechange()">
-        <option>Black </option>
-        <option>Dark Blue </option>
-        <option>Light Grey </option>
-        <option>Light Green </option>
-        <option>Light red </option>
-        </select>
 
-        <hr>
-        <div id="changethis">Hello!!</div>
-    
+</head>
+
+<body>
+    <select id='selector' onchange="togglechange(this)">
+        <option id="none">None</option>
+        <option id="black">Black</option>
+        <option id="dblue">Dark Blue</option>
+        <option id="lgrey">Light Grey</option>
+        <option id="lgreen">Light Green</option>
+        <option id="lred">Light red</option>
+    </select>
+
+    <hr>
+    <div id="changethis">Hello!!</div>
+
 
 
 
@@ -34,21 +36,41 @@
 
 <script>
  
-let output = document.getElementById("changethis")
+    let farge;
+    colorize()
+    togglechange()
+    function togglechange(selected) {
+        farge = selected.value;
+        colorize()
 
-function togglechange() {
+    }
+
+    function colorize() {
+        let output = document.getElementById("changethis")
+
+
+
+        if (farge == 'Light Grey') { output.style.backgroundColor = 'lightgrey' };
+        if (farge == 'Light Green') { output.style.backgroundColor = 'lightgreen' };
+        if (farge == 'Light red') { output.style.backgroundColor = 'lightcoral' };
+        if (farge == 'Black') { output.style.backgroundColor = 'black' };
+        if (farge == 'Dark Blue') { output.style.backgroundColor = 'darkblue' };
+        if (farge == 'none') { output.style.backgroundColor = 'white' };
+        if (farge == 'Black' || farge == 'Dark Blue') {output.style.color = 'white'}
+        else {output.style.color ='black'}
+                            
 
 
 
 
-}
+
+        }           
+       
+
 
     
 
-///lag select med farger, svar, mørkeblå, lysegrå, lysegrønn, lyserød, 
-///lag en div som refelekterre fargen og at den enrer seg , 
-// bruk ||"eller"|| til og vege hvit forgrunnsfarge om fage =  svart eller mørkeblå
- 
+
 
 
 </script>
