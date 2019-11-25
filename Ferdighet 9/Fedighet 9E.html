@@ -8,76 +8,47 @@
     <title>Document</title>
 
     <style>
-        .colorblack {
-            background-color: black;
-            color: white;
-        }
-
-        .colorDBlue {
-            background-color: darkblue;
-            color: white;
-        }
-
-        .colorLGray {
-            background-color: lightgray
-        }
-
-        .colorLGreen {
-            background-color: lightgreen;
-        }
-
-        .colorLred {
-            background-color: lightcoral;
-        }
+    
+        
     </style>
 
 
 
 </head>
-
-
-
-
-
 <body>
-    <select id="collorselector" onchange="magic(this)">
-        <option></option>none</option>
-        <option id="black" onchange="magic()">Black</option>
-        <option id="dblue" onchange="magic()">Dark Blue</option>
-        <option id="gray" onchange="magic()">Light Gray</option>
-        <option id="lgreen" onchange="magic()">Light Green</option>
-        <option id="lred" onchange="magic()"> Light Red</option>
-    </select>
+    <select onchange="togglechange()">
+        <option>Black </option>
+        <option>Dark Blue </option>
+        <option>Light Grey </option>
+        <option>Light Green </option>
+        <option>Light red </option>
+        </select>
 
-    <br>
-    <hr>
-    <div id="coloroutput">Hello!</div>
+        <hr>
+        <div id="changethis">Hello!!</div>
+    
+
+
 
 </body>
 
 <script>
-    var colorchange = document.getElementById("collorselector")
-    var output = document.getElementById("coloroutput")
-    var black = document.getElementById("black")
-    var darkBlue = document.getElementById("dblue")
-    var lightGray = document.getElementById("gray")
-    var lightGreen = document.getElementById("lgreen")
-    var lightRed = document.getElementById("lred")
-
-    
-
-    function magic() {
-        if (colorchange == 'black') {
-            document.getElementById('coloroutput').classList.toggle('colorblack');}
  
-    }
+let output = document.getElementById("changethis")
+
+function togglechange() {
 
 
+
+
+}
 
     
 
-
-
+///lag select med farger, svar, mørkeblå, lysegrå, lysegrønn, lyserød, 
+///lag en div som refelekterre fargen og at den enrer seg , 
+// bruk ||"eller"|| til og vege hvit forgrunnsfarge om fage =  svart eller mørkeblå
+ 
 
 
 </script>
