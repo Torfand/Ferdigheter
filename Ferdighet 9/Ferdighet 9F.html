@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="info">Velg 1 fra hvær linje</div>
+    Bunn: <input id="amerikanskBunn" type="radio" name="bunn" onchange="pizzafy()"> Amerikansk
+    <input id="italienskBunn" type="radio" name="bunn" onchange="pizzafy()"> Italiensk
+    <input id="firkantbunn" type="radio" name="bunn" onchange="pizzafy()"> Firkantet
+    <br>
+    Fyll : <input id="fyllTaco" type="radio" name="fyll" onchange="pizzafy()"> Taco
+    <input id="fyllKylling" type="radio" name="fyll" onchange="pizzafy()">  Kylling
+    <input id="fyllPeperoni" type="radio" name="fyll" onchange="pizzafy()"> Peperoni
+    <input id="fyllSkinke" type="radio" name="fyll" onchange="pizzafy()"> Skinke
+    <br>
+    Størelse : <input id="liten" type="radio" name="size" onchange="pizzafy()"> Liten
+    <input id="middels" type="radio" name="size" onchange="pizzafy()"> Medium
+    <input id="stor" type="radio" name="size" onchange="pizzafy()"> Stor
+    <input id="extraStor" type="radio" name="size" onchange="pizzafy()"> Ekstra-Stor
+    <br>
+
+    <button id='order' disabled="" onclick='alert("bestilt!!")'>Bestill</button>
+
+</body>
+<script>
+
+let orderbtn = document.getElementById("order")
+let infoDiv = document.getElementById("info")
+//Bunn
+let amerikanskBunn = document.getElementById("amerikanskBunn")
+let italienskBunn = document.getElementById("italienskBunn")
+let firkantBunn = document.getElementById("firkantbunn")
+//Fyll
+let fyllKylling = document.getElementById ("fyllKylling")
+let fyllTaco = document.getElementById("fyllTaco")
+let fyllPeperoni = document.getElementById("fyllPeperoni")
+let fyllSkinke= document.getElementById("fyllSkinke")
+//Størelse
+let strliten = document.getElementByIdÆ("liten")
+let strmid = document.getElementById("middels")
+let strstor = document.getElementById("stor")
+let strxstor =document.getElementById("extraStor")
+
+
+
+function info(){
+    if ((amerikanskBunn.checked|| italienskBunn.checked || firkantBunn.checked) && 
+        (fyllTaco.checked || fyllKylling.checked || fyllSkinke.checked || fyllSkinke) && 
+        (strliten.checked || strmid.checked || strstor.checked ||strxstor.checked)) {
+        infoDiv.innerHTML ='Du har valgt alt!! trykk bestill' ;
+        orderbtn.disabled = false;
+
+}
+}
+
+
+
+
+</script>
+</html>
