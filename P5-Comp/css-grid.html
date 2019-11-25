@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>blabla</title>
+    <title>Persona 5, Compendium - inProgress</title>
     <style>
         body {
             padding: 0%;
@@ -17,9 +17,10 @@
             display: grid;
             grid-template-columns: 1fr 3fr;
             grid-template-rows: 2fr 10fr 1px;
-            grid-template-areas: ' header header'
-                                'menu content'
-                                'footer footer';
+            grid-template-areas:
+                ' header header'
+                'menu content'
+                'footer footer';
 
         }
 
@@ -29,43 +30,72 @@
             grid-area: header;
             color: whitesmoke;
             text-shadow:
-                                  3px 3px 0 #000,
-                                -1px -1px 0 #000,  
-                                 1px -1px 0 #000,
-                                -1px 1px 0 #000,
-                                 1px 1px 0 #000;
+                3px 3px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
             font-family: Lucida;
             padding: 0%;
             margin: 0%;
         }
 
-        div.menu {
+        .menu {
             background-image: url("p5-menu.jpg");
             background-size: cover;
             grid-area: menu;
             background-repeat: no-repeat;
-            color:white;
+            color: white;
             text-shadow:
-                         3px 3px 0 #000,
-                        -1px -1px 0 #000,  
-                         1px -1px 0 #000,
-                             -1px 1px 0 #000,
-                             1px 1px 0 #000;
+                3px 3px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
             font-family: Lucida;
+
+            display: initial;
+        }
+
+        a {
+            color: whitesmoke;
             text-decoration: underline;
+
+
+
+
+        }
+
+        button {
+            background-color: red;
+
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            text-shadow:
+                3px 3px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
         }
 
         div.content {
-            
-            
+
+
             grid-area: content;
         }
 
         div.footer {
 
             grid-area: footer;
+            background-color: gray;
         }
-        
+
         @media only screen and (max-width: 100px) {
             div.page {
                 grid-template-columns: 1fr;
@@ -75,10 +105,8 @@
                     'menu'
                     'content'
                     'footer'
-                } 
-                }
-       
-  
+            }
+        }
     </style>
 
 
@@ -91,16 +119,21 @@
 
 <body>
     <div class="page">
-        <h1 class="header"> Persona 5 Fuse Compendium 
+        <h1 class="header"> Persona 5 Fuse Compendium
             <br>
             <br>
-            <button id="showhide" onclick="toggleVisibility()">Show/Hide sidemenu</button>
-            </h1>
+            <button id="showhide" onclick="toggleVisibility()">Show/Hide - Sidemenu</button>
+        </h1>
 
-        <div class="menu" style="font-size: 30px; " > Menu 
+        <div class="menu" id='meny' style="font-size: 30px; "> Menu:
             <br>
+            <br>
+            <a href="https://www.google.com/">Google</a>
+            <br>
+            <br>
+            <a href="https://waninko.github.io/GETeamWorking/ssp/stein_saks_papir_modul1_221119.html">Stein, saks, papir</a>
         </div>
-            <div class="content"> Select Persona from dropdown
+        <div class="content"> Select Persona from dropdown
             <select id="selectorA" onchange="selectedV(this)">
                 <option>none</option>
                 <option>Arsene</option>
@@ -119,59 +152,71 @@
             </select>
             <div id="outputDiv" style="font-size: 30px; "></div>
         </div>
-   
 
-        <div class="footer"> Footer </div>
+
+        <div class="footer"> Her er en footer </div>
 
     </div>
     <script>
-        // Her lager jeg Variablene "output", aValue, og bValue + sier at outputDiv sin innerhtml er i output variablen 
+        // Her lager jeg Variablene "output", aValue, og bValue + sier at outputDiv sin innerhtml er output variablen 
         let output = document.getElementById("outputDiv");
         let aValue;
         let bValue;
-        let togglemenu = document.getElementById("hei");
-      
+
         function selectedV(selected) {
-           //Denne funskjonen henter ut valuen av selector a, og putter det inn i variabelen "aValue"
+            //Denne funskjonen henter ut valuen av selector a, og putter det inn i variabelen "aValue"
             aValue = selected.value;
-            total(); }
+            total();
+        }
         function selectedVB(selected) {
             //Denne funskjonen henter ut valuen av selector b, og putter det inn i variabelen "bValue"
             bValue = selected.value;
-             total();}
             total();
-  console.log(aValue, bValue)
-            function total() {
-                
-                //Her setter jeg hvilke resultat du får om du har valgt Arsene på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+        }
+        total();
+        console.log(aValue, bValue)
+        function total() {
+
+            //Her setter jeg hvilke resultat du får om du har valgt Arsene på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
             if (aValue == 'none' && bValue == 'none') { output.innerHTML = ' ' };
             if (aValue == 'Arsene' && bValue == 'Arsene') { output.innerHTML = "Not avaliable as a fuse option" };
             if (aValue == 'Arsene' && bValue == 'Jack-o-Lantern') { output.innerHTML = "Mandrake" + '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> " };
-            if (aValue == 'Arsene' && bValue == 'Pixie') { output.innerHTML = "Agathion" + '<br>' +"<img src='Agathion.png' height='200' width='200': <img> " };
-            if (aValue == 'Arsene' && bValue == 'Incubus') { output.innerHTML = "Slime"  + '<br>' + "<img src='slime.jpg' height='200' width='200': <img> " };
-                //Her setter jeg hvilke resultat du får om du har valgt Jack-o-Lantern på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+            if (aValue == 'Arsene' && bValue == 'Pixie') { output.innerHTML = "Agathion" + '<br>' + "<img src='Agathion.png' height='200' width='200': <img> " };
+            if (aValue == 'Arsene' && bValue == 'Incubus') { output.innerHTML = "Slime" + '<br>' + "<img src='slime.jpg' height='200' width='200': <img> " };
+            //Her setter jeg hvilke resultat du får om du har valgt Jack-o-Lantern på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
             if (aValue == 'Jack-o-Lantern' && bValue == 'Arsene') { output.innerHTML = "Mandrake" + '<br>' + "<img src='mandrale.jpg' height='200' width='200': <img> " };
             if (aValue == 'Jack-o-Lantern' && bValue == 'Jack-o-Lantern') { output.innerHTML = "Not avaliable as a fuse option" };
-            if (aValue == 'Jack-o-Lantern' && bValue == 'Pixie') { output.innerHTML = "Incubus"   };
+            if (aValue == 'Jack-o-Lantern' && bValue == 'Pixie') { output.innerHTML = "Incubus" };
             if (aValue == 'Jack-o-Lantern' && bValue == 'Incubus') { output.innerHTML = "Berith" };
-                 //Her setter jeg hvilke resultat du får om du har valgt Pixie på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+            //Her setter jeg hvilke resultat du får om du har valgt Pixie på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
             if (aValue == 'Pixie' && bValue == 'Arsene') { output.innerHTML = 'Agathion' };
             if (aValue == 'Pixie' && bValue == 'Jack-o-Lantern') { output.innerHTML = 'Incubus' };
             if (aValue == 'Pixie' && bValue == 'Pixie') { output.innerHTML = "Not avaliable as a fuse option" };
             if (aValue == 'Pixie' && bValue == 'Incubus') { output.innerHTML = "Succubus" };
-                //Her setter jeg hvilke resultat du får om du har valgt Incubus på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
+            //Her setter jeg hvilke resultat du får om du har valgt Incubus på "dropdown A" - og hva du får for hver en kombinasjon av valgene i dropdown B
             if (aValue == 'Incubus' && bValue == 'Arsene') { output.innerHTML = "Not avaliable as a fuse option" };
             if (aValue == 'Incubus' && bValue == 'Jack-o-Lantern') { output.innerHTML = "Pixie" };
             if (aValue == 'Incubus' && bValue == 'Pixie') { output.innerHTML = "Not avaliable as a fuse option" };
             if (aValue == 'Incubus' && bValue == 'Incubus') { output.innerHTML = "Not avaliable as a fuse option" };
-                //DRY THOOOOOO!!!
-            
-
-
+            //DRY THOOOOOO!!!
 
 
         }
-       
+        // Denne funksjonen toggler "side-menyen" av og på 
+        function toggleVisibility() {
+
+            var mToggle = document.getElementById("showhide");
+            var shmenu = document.getElementById('meny')
+            document.getElementById('meny').classList.toggle('menu')
+            if (shmenu.style.display == 'none') { shmenu.style.display = ' initial' }
+            else {
+                shmenu.style.display = 'none'
+            }
+        }
+
+
+
+
 
 
 
