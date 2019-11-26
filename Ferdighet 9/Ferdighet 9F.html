@@ -42,21 +42,40 @@ let fyllTaco = document.getElementById("fyllTaco")
 let fyllPeperoni = document.getElementById("fyllPeperoni")
 let fyllSkinke= document.getElementById("fyllSkinke")
 //Størelse
-let strliten = document.getElementByIdÆ("liten")
+let strliten = document.getElementById("liten")
 let strmid = document.getElementById("middels")
 let strstor = document.getElementById("stor")
 let strxstor =document.getElementById("extraStor")
 
 
 
-function info(){
+function pizzafy(){
     if ((amerikanskBunn.checked|| italienskBunn.checked || firkantBunn.checked) && 
-        (fyllTaco.checked || fyllKylling.checked || fyllSkinke.checked || fyllSkinke) && 
+        (fyllTaco.checked || fyllKylling.checked || fyllSkinke.checked || fyllPeperoni.checked) && 
         (strliten.checked || strmid.checked || strstor.checked ||strxstor.checked)) {
         infoDiv.innerHTML ='Du har valgt alt!! trykk bestill' ;
-        orderbtn.disabled = false;
+        orderbtn.disabled = false;}
+        else {
 
-}
+
+            if (!amerikanskBunn.checked && !italienskBunn.checked && !firkantBunn.checked ) {
+                infoDiv.innerHTML += '<li>bunn </li>'
+            }
+            if (!fyllTaco.checked  && !fyllKylling.checked &&  !fyllSkinke.checked  &&  !fyllPeperoni.checked) {
+
+                infoDiv.innerHTML += '<li>fyll</li>';
+
+            }
+            if (!strliten.checked && !strmid.checked &&!strstor.checked && !strxstor.checked) {
+                infoDiv.innerHTML += '<li>størrelse</li>';
+
+            }
+
+
+        }
+
+
+
 }
 
 
