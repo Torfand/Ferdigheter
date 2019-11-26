@@ -6,16 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
     <style>
-  
     </style>
-
-
-
-
 </head>
-
 <body>
     <select id='selector' onchange="togglechange(this)">
         <option id="none">None</option>
@@ -25,17 +18,12 @@
         <option id="lgreen">Light Green</option>
         <option id="lred">Light red</option>
     </select>
-
     <hr>
     <div id="changethis">Hello!!</div>
-
-
-
-
 </body>
 
 <script>
- 
+
     let farge;
     colorize()
     togglechange()
@@ -48,31 +36,28 @@
     function colorize() {
         let output = document.getElementById("changethis")
 
-
-
         if (farge == 'Light Grey') { output.style.backgroundColor = 'lightgrey' };
         if (farge == 'Light Green') { output.style.backgroundColor = 'lightgreen' };
         if (farge == 'Light red') { output.style.backgroundColor = 'lightcoral' };
         if (farge == 'Black') { output.style.backgroundColor = 'black' };
         if (farge == 'Dark Blue') { output.style.backgroundColor = 'darkblue' };
         if (farge == 'none') { output.style.backgroundColor = 'white' };
-        if (farge == 'Black' || farge == 'Dark Blue') {output.style.color = 'white'}
-        else {output.style.color ='black'}
-                            
+        if (farge == 'Black' || farge == 'Dark Blue') { output.style.color = 'white' }
+        else { output.style.color = 'black' }
 
 
 
 
 
-        }           
-       
+
+    }
 
 
-    
+
+
 
 
 
 
 </script>
-
 </html>
