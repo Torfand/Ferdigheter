@@ -21,6 +21,8 @@
             var startY = tilfeldigTall(1, endY * 0.8);
             var bredde = endX - startX;
             var høyde = endY - startY;
+            var bokstav = tilfeldigBokstav();
+            var ord = randomword();
             var farge = tilfeldigFarge();
             var divHtml = '<div style="' +
                 delAvStylePx('left', startX) +
@@ -28,7 +30,7 @@
                 delAvStylePx('width', bredde) +
                 delAvStylePx('height', høyde) +
                 delAvStyle('background-color', farge) +
-                '"></div>';
+                '">' + bokstav + ord+'</div>';
             document.write(divHtml);
             if (Math.random() < 0.9) tilfeldigFirkant();
         }
@@ -56,11 +58,30 @@
         function tilfeldigTall(minimum, maksimum) {
             return minimum + Math.floor(Math.random() * (maksimum - minimum + 1));
         }
+        
         function tilfeldigBokstav() {
-            var tall = tilfeldigTall(0, 15);
-            if (tall < 10) return tall;
+            var tall = tilfeldigTall(0, 28);
+            if (tall == 28) return 'å'
+            if (tall == 27) return 'ø'
+            if (tall == 26) return 'æ'
             const charCodeA = 'a'.charCodeAt(0);
             return String.fromCharCode(tall - 10 + charCodeA);
+
+        }
+
+
+        function randomword() {
+            return tilfeldigBokstav() +
+            tilfeldigBokstav() +
+            tilfeldigBokstav() +
+            tilfeldigBokstav() +
+            tilfeldigBokstav();
+
+
+
+
+
+
         }
     </script>
 </body>
