@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Opening Hours</title>
+</head>
+
+<body>
+    Dag: <input id="day" onchange="showDayAndTime()" type="range" min="1" max="7" /><br />
+    Time: <input id="hour" onchange="showDayAndTime()" type="range" min="0" max="23" /><br />
+    Minutter: <input id="minute" onchange="showDayAndTime()" type="range" min="0" max="59" /><br />
+
+    <div id="dayAndTime" style="padding-top: 20px;"></div>
+    <hr>
+    <div id='openOrNot'></div>
+    <hr>
+    <script type="text/javascript">
+        function showDayAndTime() {
+            var div = document.getElementById('dayAndTime');
+            var day = document.getElementById('day').value;
+            var hour = document.getElementById('hour').value;
+            var minute = document.getElementById('minute').value;
+            var dayNo = parseInt(day);
+            var dayOutText;
+            var openOrNot = document.getElementById("openOrNot")
+
+            if (dayNo == 1) { day = 'Mandag'; }
+            else if (dayNo == 2) { day = 'Tirsdag'; }
+            else if (dayNo == 3) { day = 'Onsdag'; }
+            else if (dayNo == 4) { day = 'Torsdag'; }
+            else if (dayNo == 5) { day = 'Fredag'; }
+            else if (dayNo == 6) { day = 'Lørdag'; }
+            else if (dayNo == 7) { day = 'Søndag'; }
+
+            if (day == 'Mandag' || day == 'Tirsdag' || day == 'Onsdag' || day == 'Torsdag') { dayOutText = 'Mandag - Torsdag' }
+            else if (day == 'Fredag') { dayOutText = 'Fredag' }
+            else if (day == 'Lørdag') { dayOutText = 'Lørdag' }
+            else if (day == 'Søndag') { dayOutText = 'Søndag' }
+
+            if (dayNo < 5) {
+                if (hour >= 11 && hour <= 16) { openOrNot.innerHTML = 'Åpen' }
+                else { openOrNot.innerHTML = 'Stengt' }
+            }
+
+            if (dayNo == 5) {
+                if (hour >= 11 && hour <= 17) { openOrNot.innerHTML = 'Åpen' }
+                else { openOrNot.innerHTML = 'Stengt' }
+
+
+            }
+
+            if (dayNo == 6) {
+                if (hour >= 11 && hour <= 14) { openOrNot.innerHTML = 'Åpen' }
+                else { openOrNot.innerHTML = 'Stengt' }
+            }
+            if (dayNo == 7) {
+                openOrNot.innerHTML = 'Stengt'
+            }
+
+
+
+            div.innerHTML = '<li>' + 'Dag: ' + day + '<li>' + 'Time: ' + hour + '<li>' + 'Minutter: ' + minute + '<li>' + 'Du har valgt: ' + dayOutText;
+        }
+
+    </script>
+</body>
+
+</html>
