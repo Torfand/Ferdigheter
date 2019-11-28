@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style>
+        div.lightOn {
+            background-color: yellow;
+
+
+        }
+
+        div.lights {
+            border-radius: 50%;
+            background-color: tomato;
+            border: 2px solid;
+            width: 125px;
+            height: 120px;
+            float: left;
+            margin: 10px;
+        }
+
+        div.first {
+            clear: left;
+        }
+    </style>
+    <title>RÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆV</title>
+</head>
+
+<body>
+    <div id="timeoutput"></div>
+    <div class="lights first" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+
+    <div class="lights first" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+
+    <div class="lights first" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+
+    <div class="lights first" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"> </div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+
+    <div class="lights first" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <div class="lights" onclick="lightsOff(this)"></div>
+    <script>
+        let output = document.getElementById("timeoutput")
+        var startTime = new Date().getTime();
+        randomizeOn();
+        // debugger;
+
+        function randomizeOn() {
+            let elementsList = document.getElementsByClassName("lights");
+            let randomIndex = Math.floor(Math.random() * elementsList.length);
+            let selectedElement = elementsList[randomIndex];
+            let selectedsClassList = selectedElement.classList;
+            selectedsClassList.add("lightOn");
+            
+        }
+
+      
+        function lightsOff(selectedElement) {
+            let selectedsClassList = selectedElement.classList;
+
+            if (selectedsClassList.contains("lightOn")) {
+                    
+                let finishTime = new Date().getTime();
+                let spentMS = Math.floor(finishTime - startTime);
+              
+                let spentS = spentMS / 1000;
+                console.log(spentMS)
+                output.innerHTML = 'Du brukte ' + spentS + 'Sekunder' ;
+                startTime = new Date().getTime();
+                
+                selectedsClassList.remove("lightOn");
+                randomizeOn();
+
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+
+</html>
