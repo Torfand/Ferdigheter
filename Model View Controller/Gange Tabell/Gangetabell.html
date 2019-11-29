@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="range" min="1" max="100" value="5" oninput="timestable(this.value)">
+    <div id="multiplication"></div>
+    
+
+    <script>
+        //Hjelpevariabler
+        let multiplicationdiv = document.getElementById("multiplication");
+        
+
+
+
+
+
+
+        //Model
+        let columns = 5;
+        let multiplications = [
+            1, 2, 3, 4, 5,
+            6, 7, 8, 9, 10,
+            11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20,
+            21, 22, 23, 24, 25
+        ];
+
+        //View
+        show();
+        function show() {
+            let page = '';
+            for (let i = 0; i < multiplications.length; i++) {
+                let number = multiplications[i];
+                page += `<div>${number}</div>`;
+               
+            }
+            multiplicationdiv.innerHTML = page;
+            multiplicationdiv.style.display ='grid';
+            multiplicationdiv.style.gridTemplateColumns = `repeat(${columns},40px)`; 
+            
+        }
+
+    //Controller
+
+        function timestable(value) {
+            columns = value;
+            multiplications = [];
+           
+            for (let num1 = 1; num1 <= value; num1++) {
+                for (let num2 = 1 ; num2 < value; num2++){
+                    multiplications.push(num1 * num2);
+                   
+                }
+                
+            }
+            show();
+
+
+        }
+    </script>
+</body>
+
+</html>
