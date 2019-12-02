@@ -69,25 +69,25 @@
         var correctInput = '3812';
         var output = document.getElementById("log");
         var currentCode;
-        
+
 
         function vis(telling) {
-        
-        output.innerHTML += telling.innerHTML + '';
+
+            output.innerHTML += telling.innerHTML + '';
             currentCode = output.innerHTML;
-               console.log(currentCode, correctInput)  ;
-               
-                if (currentCode == correctInput) {
-                    output.innerHTML = 'Open';
-                     
-                    } 
-        
-                    if (currentCode.length == 5) {
+            console.log(currentCode, correctInput);
+
+            if (currentCode == correctInput) {
+                output.innerHTML = 'Open';
+
+            }
+
+            if (currentCode.length == 5) {
                 correctInput = '';
                 output.innerHTML = '';
             }
-        
-         }
+
+        }
 
 
 
