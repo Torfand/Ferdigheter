@@ -22,7 +22,8 @@
             font-size: 450%;
             text-align: center;
             vertical-align: center;
-            border: dotted 3px;
+            border: dotted black 3px;
+
         }
 
         div.first {
@@ -39,17 +40,17 @@
     </style>
 </head>
 
-<body >
+<body id="hei">
     <h1 id="winner"></h1>
     <div id="board"></div>
-    
+
 
     <script>
-        
+
         //hjelpe variabler
         let winnerHeader = document.getElementById("winner")
         let boardDiv = document.getElementById("board");
-        let resta = document.getElementById("rbtn")
+
         ///model
         let board = ['', '', '', '', '', '', '', '', ''];
 
@@ -57,19 +58,23 @@
 
         playtable();
         function playtable() {
-            let page;
+            let page = ''
             let winner = checkwinning();
+
             let win = winner != '' ? `Vinneren er ${winner} . <br>
-            Trykk her for og starte på nytt : <button id="rRbtn" onclick="restart()">Reset</button>` : '';
+            Trykk her for og starte på nytt : <button  onclick="restartgame()">Reset</button>` : '';
             for (let i = 0; i < 9; i++) {
-                let first = i % 3 == 0 ? 'first' : '';
-                page += `<div  onclick="toX(${i})" class="cells color${board[i]} ${first}">${board[i]}</div>`;
+                let first = i % 3 == 0 ? 'first' : ' ';
+                let ocolor = board[i] == 'o' ? 'oColor' : ' '
+                let xcolor = 'x' ? 'xColor' : ' '
+                page += `<div onclick="toX(${i})" class =" cells ${board[i]} ${first} ${ocolor} ">${board[i]}</div>`;
 
             }
+
             boardDiv.innerHTML = page;
             winnerHeader.innerHTML = win;
             checkwinning();
-          
+
         }
         //controller
         function toX(change) {
@@ -78,8 +83,8 @@
                 board[change] = 'x';
                 toO();
             }
-           
-            playtable(); 
+
+            playtable();
             checkwinning();
         }
         function toO() {
@@ -93,28 +98,35 @@
             checkwinning();
         }
         function checkwinning() {
-         let winingCombo = [[0, 1, 2], [3, 4, 5], [6, 7, 8],[0, 3, 6], [1, 4, 7], [2, 5, 8],[0, 4, 8],[2, 4, 6]]
+            let winingCombo = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
             for (let i = 0; i < winingCombo.length; i++) {
-                let wincombo = winingCombo[i]; }
-                for (wincombo of winingCombo) {
-                    if (iswinner(wincombo)) { return board[wincombo[0]];}
-                
-                }                    
-         if (! iswinner(wincombo)) { return  ''}
-         }
-        function iswinner(combo){
+                let wincombo = winingCombo[i];
+            }
+            for (wincombo of winingCombo) {
+                if (iswinner(wincombo)) { return board[wincombo[0]]; }
+
+            }
+            if (!iswinner(wincombo)) { return '' }
+        }
+        function iswinner(combo) {
             return board[combo[0]] == board[combo[1]]
                 && board[combo[2]] == board[combo[1]]
                 && (board[combo[0]] == 'x' || board[combo[0]] == 'o');
-                console.log(combo)
+            console.log(combo)
 
 
         }
-        function restart() {
-
-           
+        function restartgame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            playtable();
 
         }
+
+
+
+
+
+
     </script>
 
 </body>
