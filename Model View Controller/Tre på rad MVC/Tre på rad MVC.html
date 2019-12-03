@@ -39,16 +39,17 @@
     </style>
 </head>
 
-<body>
+<body >
     <h1 id="winner"></h1>
     <div id="board"></div>
-
+    
 
     <script>
+        
         //hjelpe variabler
         let winnerHeader = document.getElementById("winner")
         let boardDiv = document.getElementById("board");
-
+        let resta = document.getElementById("rbtn")
         ///model
         let board = ['', '', '', '', '', '', '', '', ''];
 
@@ -56,16 +57,19 @@
 
         playtable();
         function playtable() {
+            let page;
             let winner = checkwinning();
-            let page = winner != '' ? `Vinneren er ${winner}` : '';
+            let win = winner != '' ? `Vinneren er ${winner} . <br>
+            Trykk her for og starte på nytt : <button id="rRbtn" onclick="restart()">Reset</button>` : '';
             for (let i = 0; i < 9; i++) {
                 let first = i % 3 == 0 ? 'first' : '';
-                page += `<div onclick="toX(${i})" class="cells color${board[i]} ${first}">${board[i]}</div>`;
+                page += `<div  onclick="toX(${i})" class="cells color${board[i]} ${first}">${board[i]}</div>`;
 
             }
             boardDiv.innerHTML = page;
+            winnerHeader.innerHTML = win;
             checkwinning();
-
+          
         }
         //controller
         function toX(change) {
@@ -84,20 +88,20 @@
             if (emptyTables.length === 0) { return; }
             let random = Math.floor(Math.random() * emptyTables.length);
             let emptyTable = emptyTables[random];
-            board[emptyTable] = 'o';
+            board[emptyTable] = "o";
             playtable();
             checkwinning();
         }
         function checkwinning() {
-         let winingCombo = [[0, 1, 2], [4, 5, 6], [7, 8, 9],[1, 4, 7], [2, 5, 8], [3, 6, 9],[1, 5, 9],[3, 5, 7]]
+         let winingCombo = [[0, 1, 2], [3, 4, 5], [6, 7, 8],[0, 3, 6], [1, 4, 7], [2, 5, 8],[0, 4, 8],[2, 4, 6]]
             for (let i = 0; i < winingCombo.length; i++) {
                 let wincombo = winingCombo[i]; }
                 for (wincombo of winingCombo) {
                     if (iswinner(wincombo)) { return board[wincombo[0]];}
-                 
+                
                 }                    
-        }
-        
+         if (! iswinner(wincombo)) { return  ''}
+         }
         function iswinner(combo){
             return board[combo[0]] == board[combo[1]]
                 && board[combo[2]] == board[combo[1]]
@@ -105,7 +109,10 @@
                 console.log(combo)
 
 
+        }
+        function restart() {
 
+           
 
         }
     </script>
