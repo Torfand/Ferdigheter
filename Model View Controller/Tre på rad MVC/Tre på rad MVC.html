@@ -9,6 +9,38 @@
 
 
     <style>
+        h1 {
+
+            font-family: fantasy;
+
+
+
+
+
+        }
+
+        button {
+            background-color: forestgreen;
+
+            border: dashed black;
+            color: crimson;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            text-shadow:
+                3px 3px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+
+
+
+
+        }
+
         div {
             user-select: none;
         }
@@ -66,8 +98,8 @@
             for (let i = 0; i < 9; i++) {
                 let first = i % 3 == 0 ? 'first' : ' ';
                 let ocolor = board[i] == 'o' ? 'oColor' : ' '
-                let xcolor = 'x' ? 'xColor' : ' '
-                page += `<div onclick="toX(${i})" class =" cells ${board[i]} ${first} ${ocolor} ">${board[i]}</div>`;
+                // let xcolor = 'x' ? 'xColor' : ' '
+                page += `<div onclick="toX(${i})" class =" cells ${board[i]} ${first} ${ocolor}">${board[i]}</div>`;
 
             }
 
@@ -112,7 +144,7 @@
             return board[combo[0]] == board[combo[1]]
                 && board[combo[2]] == board[combo[1]]
                 && (board[combo[0]] == 'x' || board[combo[0]] == 'o');
-            console.log(combo)
+
 
 
         }
