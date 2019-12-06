@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Obligatorisk Oppgave 2</title>
+
+    <style>
+        body {
+            user-select: none;
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+    </div>
+    <script>
+
+        //Hjelpe  Variabler
+        let output = document.getElementById("content")
+
+
+        //model
+        let clickedbar = 'Ingen'
+        let numbers = [7, 8, 2, 5, 3];
+        let isbuttondisabled = true;
+        display();
+
+        //view
+
+
+        function display() {
+            let toggle = isbuttondisabled == true ? 'disabled' : 'enabled'
+            let svgOutput = '';
+
+            for (let i = 0; i < numbers.length; i++) {
+                let numberOfBar = i  +1;
+                svgOutput += createBars(numbers[i], i +1 );
+            }
+
+
+            output.innerHTML =
+                ` <svg id="charts" width="500" viewbox= " 0 0 80 60">${svgOutput}</svg>
+                <br>
+                Du har valg stolpe : <i id="outText">${clickedbar}</i>
+                <br>
+                Verdi : <input id="value" type="number" min="1" max ="10" >
+                <button id="addBtn" onclick="action('add')">Legg til stolpe</button>
+                <button id="removeBtn" ${toggle} onclick="action('remove')" >Fjærn stolpe</button>
+                <button id="changeBtn" ${toggle} onclick="action('edit')" >Endre på valgt stolpe</button>`;
+            //  console.log(changeBtn , removeBtn)
+
+        }
+
+        function createBars(number, numberOfBar) {
+
+
+            const width = 8;
+            const spacing = 2;
+            let x = (numberOfBar - 1) * (width + spacing);
+            let height = number * 6;
+            let y = 60 - height
+            let border = 0;
+            let color = colorBars(1, 10, numberOfBar);
+            if (clickedbar != 'Ingen' && numberOfBar == clickedbar) {
+                border = 1;
+            }
+
+            return ` <rect onclick ="chosenbar(${numberOfBar})"
+            width="${width}" 
+            height="${height}" 
+            x="${x}"
+            y="${y}"
+            fill="${color}"
+            stroke-width="${border}"
+            stroke="black">
+            </rect>` ;
+        }
+
+        function colorBars(min, max, val) {
+            let minHue = 240, maxhue = 0;
+            let currentPrecentage = (val - min) / (max - min)
+            let cString = "hsl(" + ((currentPrecentage * (maxhue - minHue)) + minHue) + ",100%,50%)";
+            return cString;
+
+            display();
+        }
+
+
+
+        //controller
+        function chosenbar(numberOfBar) {
+
+            if (clickedbar == numberOfBar) {
+                isbuttondisabled = true;
+                clickedbar = 'Ingen'
+
+            } else {
+
+                clickedbar = numberOfBar;
+                isbuttondisabled = false;
+
+
+
+            }
+
+
+            display();
+        }
+        function action(typeofAction) {
+            let inputValue = document.getElementById("value")
+
+            if (inputValue.value < 10 || inputValue > 1) {
+
+
+                if (typeofAction == 'add') {
+                     if (inputValue.value < 1 || inputValue.value > 10) {
+                        return alert("Kan ikke legge til en stolpe med verdi mindre enn 1 og større enn 10")
+                    }
+                    numbers.push(parseInt(inputValue.value))
+                    display();
+                }
+
+
+                if (typeofAction == 'edit') {
+                    if (inputValue.value == 0) {
+                        return alert('Kan ikke endre verdi på valgt stolpe med en verdi av ingenting')
+
+                    }
+
+                    numbers[parseInt(clickedbar) - 1] = parseInt(inputValue.value)
+                    display();
+                }
+
+
+
+                if (typeofAction == 'remove') {
+                    if(numbers.length == 1 ) {
+                        
+                        
+                        clickedbar = 'Ingen' 
+                      //  alert("er  blank")
+                    }
+                        
+                    numbers.splice(parseInt(clickedbar) - 1, 1)
+                    display();
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
