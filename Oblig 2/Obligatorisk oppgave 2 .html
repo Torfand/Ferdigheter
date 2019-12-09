@@ -35,20 +35,25 @@
         //view
 
         function display() {
+            // denne slår på knappene " remove og edit" om en stolpe er valgt
             let toggle = isbuttondisabled == true ? 'disabled' : 'enabled'
+            // denne tegner opp svg "boxen"
             let svgOutput = '';
-
+            
+            // her sier jeg at "i" er null, og om "i" er mindre enn lengden til "numbers arrayet" så legg til 1 på "i"
             for (let i = 0; i < numbers.length; i++) {
+                // her ber jeg numberOfBar være lik i og plusse på 1
                 let numberOfBar = i + 1;
+
                 svgOutput += createBars(numbers[i], i + 1);
             }
 
             output.innerHTML =
                 ` <svg id="charts" width="500" viewbox= " 0 0 80 60">${svgOutput}</svg>
                 <br>
-                Du har valg stolpe : <i id="outText">${clickedbar}</i>
+                Du har Valgt stolpe : <i id="outText">${clickedbar}</i>
                 <br>
-                Verdi : <input id="value" type="number" min="1" max ="10" selected value = 0 >
+                Verdi : <input id="value" type="number" min="1" max ="10" selected value = 1 >
                 <button id="addBtn" onclick="action('add')">Legg til stolpe</button>
                 <button id="removeBtn" ${toggle} onclick="action('remove')" >Fjærn stolpe</button>
                 <button id="changeBtn" ${toggle} onclick="action('edit')" >Endre på valgt stolpe</button>`;
@@ -58,7 +63,7 @@
 
 
         function createBars(number, numberOfBar) {
-
+ // i denne funskjonen lager jeg bars, og setter verdier på di, feks vidde høyde og mellomrom 
             const width = 8;
             const spacing = 2;
             let x = (numberOfBar - 1) * (width + spacing);
@@ -82,6 +87,7 @@
         }
 
         function colorBars(min, max, val) {
+            // denne funksjonen lager farge og sender det tilbake til barene
             let minHue = 240, maxhue = 0;
             let currentPrecentage = (val - min) / (max - min)
             let cString = "hsl(" + ((currentPrecentage * (maxhue - minHue)) + minHue) + ",100%,50%)";
@@ -94,6 +100,7 @@
 
         //controller
         function chosenbar(numberOfBar) {
+            // denne funksjonen sier at om en bar er valgt så skal den outpute hvilket nummer en har valgt , og om en bar er valgt skal den enable knappene "remove og edit"
 
             if (clickedbar == numberOfBar) {
                 isbuttondisabled = true;
@@ -109,23 +116,30 @@
             display();
         }
         function action(typeofAction) {
+            // denne funksjonen tilsier hva knappene gjør
             let inputValue = document.getElementById("value")
 
             if (inputValue.value) {
                     
                 if (typeofAction == 'add') {
                 if (inputValue.value < 1 || inputValue.value > 9 ) {
-                        return alert("Kan ikke legge til en stolpe med verdi mindre enn 1 og større enn 10")
+                        return alert("Kan kun legge til en stople med verdi mellom 1 og 10")
                     }
+                    if (numbers.length > 7) {
+                        numbers.length = 8
+                        return alert ("Kan ikke ha mer enn 8 bars om gangen =(")
+                    }
+                    // push dytter in input sin verdi i arrayet "numbers"
                     numbers.push(parseInt(inputValue.value))
                     display(); }
 
                 if (typeofAction == 'edit') {
-                    if (inputValue.value == 0) {
-                        return alert('Kan ikke endre verdi på valgt stolpe med en verdi av ingenting')
+                    if (inputValue.value == 0 || inputValue.value > 9) {
+                        return alert('Verdi må vere mellom 1 og 10')
                     }
-                  
-                    numbers[parseInt(clickedbar) - 1] = parseInt(inputValue.value)
+                  // redigerer en bar(tall) i arrayet "numbers" utifra input sin verdi
+                    numbers[parseInt(clickedbar) - 1] = parseInt(inputValue.value) ;
+                    
                     display();
                 }
 
@@ -134,9 +148,9 @@
 
 
                         clickedbar = 'Ingen'
-                        //  alert("er  blank")
+                        
                     }
-
+                    // splice i dette tilfellet fjerner en bar(tall) fra arrayet "numbers"
                     numbers.splice(parseInt(clickedbar) - 1, 1)
                     display();
                 }
