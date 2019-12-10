@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" onkeydown="if (event.code === 'Enter') addANumber(this)">
+    <div id="stats"></div>
+    <script>
+        let numbers = [];
+        let outputStats = document.getElementById("stats");
+        
+        
+        
+        function addANumber(onInput) {
+            numbers.push(parseInt(onInput.value));
+            onInput.value = '';
+            display();
+            
+        }
+
+
+        function domaths() {
+            let statistics = {};
+            statistics.min = numbers[0];
+            statistics.max = numbers[0];
+            statistics.sum = 0 ;
+            for (let n of numbers) {
+                if (n < statistics.min) statistics.min = n;
+                if (n < statistics.max) statistics.max = n;
+                statistics.sum += n;
+                
+                
+            }
+            statistics.counted = numbers.length;
+            statistics.avrage = statistics.sum / statistics.counted;
+          
+            return statistics;
+            
+        }
+        
+        
+        
+        
+        function display() {
+            const alltheNumbers = `<ul>${numbers.map(n => `<li>${n}</li>`).join('')}</ul>`;
+            const statistics = domaths();
+            const statsHTML = `
+            <table>
+                <tr><td>Min</td><td>${statistics.min}</td></tr>
+                <tr><td>Max</td><td>${statistics.max}</td></tr>
+                <tr><td>Sum</td><td>${statistics.sum}</td></tr>
+                <tr><td>Avrage</td><td>${statistics.avrage}</td></tr>
+                <tr><td>Counted</td><td>${statistics.counted}</td></tr> `
+
+            outputStats.innerHTML = statsHTML + alltheNumbers;
+      
+        }
+
+    </script>
+
+
+</body>
+
+</html>
