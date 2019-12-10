@@ -93,7 +93,7 @@
 
             const task = tasks[i]
             const ischecked = task.isDone ? 'checked="checked"' : '';
-            if (!task.editMode)
+            if (!task.editMode && !task.editRespMode)
 
                 return `  <tr>
                     <td>${task.descripton}</td>
@@ -141,7 +141,7 @@
              
             display();
             inputTask.value = '';
-            inputResponsible = ''
+            inputResponsible.value = ''
         }
         function changeDone(checkbox, index) {
             tasks[index].isDone = checkbox.checked
@@ -155,6 +155,12 @@
             tasks[index].editMode = true;
 
             display();
+        }
+      function  editResponsible(index){
+            tasks[index].editRespMode = true;
+
+            display();
+
         }
         function updateTask(index) {
             const id = `editOn${index}`;
