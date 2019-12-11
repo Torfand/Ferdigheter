@@ -10,7 +10,7 @@
     <style>
         body {
             user-select: none;
-
+          
 
 
         }
@@ -88,7 +88,7 @@
 
         function colorBars(min, max, val) {
             // denne funksjonen lager farge og sender det tilbake til barene
-            let minHue = 240, maxhue = 0;
+            let minHue = 0, maxhue = 240;
             let currentPrecentage = (val - min) / (max - min)
             let cString = "hsl(" + ((currentPrecentage * (maxhue - minHue)) + minHue) + ",100%,50%)";
             return cString;
@@ -115,16 +115,16 @@
 
             display();
         }
-        
+
         function action(typeofAction) {
             
             let inputValue = document.getElementById("value")
 
-            if (inputValue.value) {
+          
 
                 if (typeofAction == 'add') {
-                    if (inputValue.value < 1 || inputValue.value > 9) {
-                        return alert("Kan kun legge til en stople med verdi mellom 1 og 10")
+                    if (inputValue.value < 1 || inputValue.value > 10) {
+                        return alert("Kan kun legge til en stople med verdi fra 1 til 10")
                     }
                     if (numbers.length > 7) {
                         numbers.length = 8
@@ -136,8 +136,8 @@
                 }
 
                 if (typeofAction == 'edit') {
-                    if (inputValue.value == 0 || inputValue.value > 9) {
-                        return alert('Verdi må vere mellom 1 og 10')
+                    if (inputValue.value == 0 || inputValue.value > 10) {
+                        return alert('Verdi må vere fra 1 til 10')
                     }
                     // redigerer en bar(tall) i arrayet "numbers" utifra input sin verdi
                     numbers[parseInt(clickedbar) - 1] = parseInt(inputValue.value);
@@ -148,13 +148,13 @@
                 if (typeofAction == 'remove') {
                     if (numbers.length == 1) {
                         clickedbar = 'Ingen'
-
+                        isbuttondisabled = true;
                     }
                     // splice i dette tilfellet fjerner en bar(tall) fra arrayet
                     numbers.splice(parseInt(clickedbar) - 1, 1)
                     display();
                 }
-            }
+            
         }
 
     </script>
