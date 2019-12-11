@@ -52,15 +52,15 @@
 
     Write Task: <input id="taskinput" type="text">
     Write Responsible:<input id="nameinput" tupe="text"> 
-    Date : <input id="dateinput" type="date"><button onclick="addTask()">Add Task & Responsible</button>
+    Deadline : <input id="dateinput" type="date"><button onclick="addTask()">Add Task & Responsible</button>
 
     <script>
         //model
         let tasks = [
 
-            { descripton: 'Handle til middag', isDone: true, person: 'Torfin', dateDeadline : '22-04-2020' },
-            { descripton: 'Lage middag', isDone: false, person: 'Torfin', dateDeadline  : '22-04-2020'},
-            { descripton: 'Eta Skjit', isDone: false, person: 'Torfin', dateDeadline  : '22-04-2020'},
+            { descripton: 'Handle til middag', isDone: true, person: 'Torfin', dateDeadline : '22-04-2020', doneDate:'22-04-2020'},
+            { descripton: 'Lage middag', isDone: false, person: 'Torfin', dateDeadline  : '22-04-2020', doneDate:''},
+            { descripton: 'Eta Skjit', isDone: false, person: 'Torfin', dateDeadline  : '22-04-2020', doneDate:''},
 
         ];
 
@@ -77,8 +77,8 @@
             <th></th>
             <th>Responsible</th>
             <th></th>
-            <th>Deadline<th>
-            <th>Finished-on:<th>
+            <th>Deadline</th>
+            <th>Finished-on:</th>
             </tr> 
             `;
             for (let i = 0; i < tasks.length; i++) {
@@ -105,6 +105,7 @@
                     <td><button onclick="editResponsible(${i})">Edit-Responsible</button>
                         </td>
                         <td>${task.dateDeadline}</td>
+                        <td>${task.doneDate}</td>
 
                 
             </tr>
@@ -118,7 +119,9 @@
                    
                     </td>
                     <td>${task.person}</td>
-                    <td><button onclick="editResponsible(${i})">Edit-Responsible</button></tr>
+                    <td><button disabled onclick="editResponsible(${i})">Edit-Responsible</button></td>
+                        <td>${task.dateDeadline}</td>
+                        <td>${task.doneDate}</td>
             </tr>
             `;
             if (task.editRespMode)
@@ -126,12 +129,14 @@
                 <td>${task.descripton}</td>
                 <td><input onchange="changeDone(this, ${i})" type="checkbox" ${ischecked} /></td> 
                 <td>
-                        <button onclick="deleteTask(${i})">Remove</button>
-                        <button onclick="editTask(${i})">Edit</button>
+                        <button disabled onclick="deleteTask(${i})">Remove</button>
+                        <button disabled onclick="editTask(${i})">Edit</button>
                    
                     </td>
                     <td><input id="editResp${i}" type="text" value="${task.person}"/></td>
-                    <td><button onclick="updateResponsible(${i})">Save Changes</button></tr>
+                    <td><button onclick="updateResponsible(${i})">Save Changes</button></td>
+                        <td>${task.dateDeadline}</td>
+                        <td>${task.doneDate}</td>
             </tr> `
 
 
@@ -140,13 +145,22 @@
 
 
         //controller 
-        let inputTask = document.getElementById("taskinput")
-        let inputResponsible = document.getElementById("nameinput")
+        let inputTask = document.getElementById("taskinput");
+        let inputResponsible = document.getElementById("nameinput");
+        let inputDate = document.getElementById("dateinput")
+        let d = new Date() ;
+        
+        
+        console.log(d)
+        
+
         function addTask() {
-            if (inputResponsible.value == '' && inputResponsible.value == '') { return alert("Begge inputt boxer må ha text") }
+            if (inputResponsible.value == '' && inputResponsible.value == '' && inputDate.value == ''  
+            ||inputResponsible.value == '' || inputResponsible.value == '' || inputDate.value ==''  ) 
+            { return alert("Fyll inn input boxene") }
             else {
                 tasks.push(
-                    {
+                    {   dateDeadline: inputDate.value,
                         person: inputResponsible.value,
                         descripton: inputTask.value,
                         isDone: false
@@ -158,7 +172,16 @@
             inputResponsible.value = ''
         }
         function changeDone(checkbox, index) {
-            tasks[index].isDone = checkbox.checked
+            tasks[index].isDone = checkbox.checked 
+            if(checkbox.checked){
+
+              tasks[index].doneDate = d.toLocaleDateString("nb-no");
+              
+            }
+            else {
+                tasks[index].doneDate = '';
+            }
+           
             display();
         }
         function deleteTask(index) {

@@ -37,12 +37,12 @@
         function display() {
             // denne slår på knappene " remove og edit" om en stolpe er valgt
             let toggle = isbuttondisabled == true ? 'disabled' : 'enabled'
-            // denne tegner opp svg "boxen"
+         
             let svgOutput = '';
 
             // her sier jeg at "i" er null, og om "i" er mindre enn lengden til "numbers arrayet" så legg til 1 på "i"
             for (let i = 0; i < numbers.length; i++) {
-                // her ber jeg numberOfBar være lik i og plusse på 1
+                
                 let numberOfBar = i + 1;
 
                 svgOutput += createBars(numbers[i], i + 1);
@@ -57,7 +57,7 @@
                 <button id="addBtn" onclick="action('add')">Legg til stolpe</button>
                 <button id="removeBtn" ${toggle} onclick="action('remove')" >Fjærn stolpe</button>
                 <button id="changeBtn" ${toggle} onclick="action('edit')" >Endre på valgt stolpe</button>`;
-            //  console.log(changeBtn , removeBtn)
+           
 
         }
 
@@ -74,7 +74,7 @@
             if (clickedbar != 'Ingen' && numberOfBar == clickedbar) {
                 border = 1;
             }
-                // her returnerer jeg rektangler til svg
+                // her returnerer jeg rektangler 
             return ` <rect onclick ="chosenbar(${numberOfBar})"
             width="${width}" 
             height="${height}" 
@@ -115,8 +115,9 @@
 
             display();
         }
+        
         function action(typeofAction) {
-            // denne funksjonen tilsier hva knappene gjør
+            
             let inputValue = document.getElementById("value")
 
             if (inputValue.value) {
@@ -146,8 +147,6 @@
 
                 if (typeofAction == 'remove') {
                     if (numbers.length == 1) {
-
-
                         clickedbar = 'Ingen'
 
                     }
