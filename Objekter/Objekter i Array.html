@@ -50,19 +50,20 @@
     </table>
     <br>
 
-   Write Task: <input id="taskinput" type="text">
-    Write Responsible:<input id="nameinput" tupe="text"><button onclick="addTask()">Add Task & Responsible</button>
+    Write Task: <input id="taskinput" type="text">
+    Write Responsible:<input id="nameinput" tupe="text"> 
+    Date : <input id="dateinput" type="date"><button onclick="addTask()">Add Task & Responsible</button>
 
     <script>
         //model
         let tasks = [
 
-            { descripton: 'Handle til middag', isDone: true, person : 'Torfin'},
-            { descripton: 'Lage middag', isDone: false, person : 'Torfin'},
-            { descripton: 'Eta Skjit', isDone: false, person : 'Torfin' },
+            { descripton: 'Handle til middag', isDone: true, person: 'Torfin', dateDeadline : '22-04-2020' },
+            { descripton: 'Lage middag', isDone: false, person: 'Torfin', dateDeadline  : '22-04-2020'},
+            { descripton: 'Eta Skjit', isDone: false, person: 'Torfin', dateDeadline  : '22-04-2020'},
 
         ];
-        
+
 
 
         //view
@@ -73,14 +74,12 @@
              <tr>
             <th>Task</th>
             <th>Done?</th>
-            
             <th></th>
             <th>Responsible</th>
             <th></th>
-            </tr>
-
-            
-            
+            <th>Deadline<th>
+            <th>Finished-on:<th>
+            </tr> 
             `;
             for (let i = 0; i < tasks.length; i++) {
                 html += createTaskRow(i);
@@ -103,12 +102,15 @@
                     <button onclick="editTask(${i})">Edit</button>
                     </td>
                     <td>${task.person}</td>
-                    <td><button onclick="editResponsible(${i})">Edit-Responsible</button></tr>
+                    <td><button onclick="editResponsible(${i})">Edit-Responsible</button>
+                        </td>
+                        <td>${task.dateDeadline}</td>
+
                 
             </tr>
             `;
-
-            return `<tr>
+            if (task.editMode)
+                return `<tr>
                 <td><input id="editOn${i}" type="text" value="${task.descripton}"/></td>
                 <td><input onchange="changeDone(this, ${i})" type="checkbox" ${ischecked} /></td> 
                 <td>
@@ -119,8 +121,18 @@
                     <td><button onclick="editResponsible(${i})">Edit-Responsible</button></tr>
             </tr>
             `;
-
-
+            if (task.editRespMode)
+                return `<tr>
+                <td>${task.descripton}</td>
+                <td><input onchange="changeDone(this, ${i})" type="checkbox" ${ischecked} /></td> 
+                <td>
+                        <button onclick="deleteTask(${i})">Remove</button>
+                        <button onclick="editTask(${i})">Edit</button>
+                   
+                    </td>
+                    <td><input id="editResp${i}" type="text" value="${task.person}"/></td>
+                    <td><button onclick="updateResponsible(${i})">Save Changes</button></tr>
+            </tr> `
 
 
         }
@@ -131,14 +143,16 @@
         let inputTask = document.getElementById("taskinput")
         let inputResponsible = document.getElementById("nameinput")
         function addTask() {
-            if (inputResponsible.value == '' && inputResponsible.value =='') {return alert("Begge inputt boxer må ha text")}
-            else{
-            tasks.push(
-                {   person: inputResponsible.value,
-                    descripton: inputTask.value,
-                    isDone: false
-                })};
-             
+            if (inputResponsible.value == '' && inputResponsible.value == '') { return alert("Begge inputt boxer må ha text") }
+            else {
+                tasks.push(
+                    {
+                        person: inputResponsible.value,
+                        descripton: inputTask.value,
+                        isDone: false
+                    })
+            };
+
             display();
             inputTask.value = '';
             inputResponsible.value = ''
@@ -156,7 +170,7 @@
 
             display();
         }
-      function  editResponsible(index){
+        function editResponsible(index) {
             tasks[index].editRespMode = true;
 
             display();
@@ -165,9 +179,19 @@
         function updateTask(index) {
             const id = `editOn${index}`;
             const inputTag = document.getElementById(id);
+           
             tasks[index].descripton = inputTag.value;
             tasks[index].editMode = false;
             display();
+        }
+        function updateResponsible(index){
+            const id = `editResp${index}`;
+            const inputTag = document.getElementById(id);
+           
+            tasks[index].person = inputTag.value;
+            tasks[index].editRespMode = false;
+            display();
+
         }
     </script>
 </body>
