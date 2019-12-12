@@ -1,0 +1,37 @@
+Notes;  
+
+if = hvis
+else if = ellers hvis
+else =  ellers
+< = mindre enn
+> = Større enn
+Bolean = en verdi som kun kan ha to utfall, "Sant" eller " usant"
+
+
+ bettingelser 
+
+ && = Logisk og (og)
+ ! = Logisk ikke
+ != = Er ikke lik (ulik)
+ == er lik
+ || = Logisk eller (eller)
+ === = Lik som og lik type som
+---------
+
+Operators i JS
+
+
+var/let = variabler
+const = Konstant
+
+
+
+while = gjentagene if setning
+
+For ,,,, ex = 1var (initialiserng før første semikolon) ; 2bettingelse; 4dette blir gjørt etter det som står inni{
+
+   3 Document.write ("hei")
+}
+
+
+
