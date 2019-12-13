@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SNAAAKE, SNAAAKE?</title>
+    <style>
+        div {
+
+            border: black solid 1px;
+            background-color: darkolivegreen;
+            padding: 300px;
+
+
+        }
+
+        div.snake {
+            background-color: darkorange;
+            block-size: 10px;
+        }
+
+        div.food {
+            background-color: red;
+            block-size: 10px;
+
+        }
+    </style>
+
+
+
+
+</head>
+
+
+
+<body>
+    <div id="gameBoard"></div>
+
+
+
+    <script>
+
+        let size = 30;
+        updateDisplay();
+        
+        function updateDisplay() {
+            let gameBoard = document.getElementById("gameBoard");
+            gameBoard.innerHTML = '';
+            
+            for(let rowIndex = 0; rowIndex < size ; rowIndex++){
+                let bdiv = gameBoard.insertRow();
+                for(let columnIndex = 0; columnIndex < size; columnIndex++)
+                let cdiv = bdiv.insertCell();
+               
+
+            }
+        }
+
+        
+
+
+    </script>
+</body>
+
+</html>
