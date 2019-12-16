@@ -65,8 +65,8 @@
         //model
         let movecount = 0
         let board = [7, 6, 1, 5, 2, 8, 4, 3, 0];
-
-
+        
+        
         //view
         display();
         function display() {
@@ -77,16 +77,16 @@
                 let disNumTxt = isBlank ? ' ' : boards;
 
                 let firstInLine = i % 3 == 0 ? 'first' : '';
-
+                
                 page += `<div class="gameBoard ${firstInLine}"
-                                    onclick="clickedBox(${i});"
-                                    >${disNumTxt}</div>`;
+                onclick="clickedBox(${i});"
+                >${disNumTxt}</div>`;
             }
-
+            
             page += `<div style="clear: both;"> Moves : ${movecount}</div>`;
             document.getElementById("board").innerHTML = page;
         }
-
+        
         function clickedBox(index) {
             let emptyIndex = findEmptyIndex(index) ;
             if (emptyIndex == null) return;
@@ -94,29 +94,30 @@
             board[emptyIndex] = board[index];
             board[index] = 0;
             display();
-
+            
         }
-
-
+        
+        
         function findEmptyIndex(index) {
             for (let delta of [-3, -1, 1, 3]) {
-            let newIndex = index + delta ;
-            if (newIndex < 0 || newIndex >= board.lenght) continue;
+                let newIndex = index + delta ;
+                if (newIndex < 0 || newIndex >= board.lenght) continue;
                 if (board[newIndex] === 0) {
                     return newIndex;
                 }
              }
-                return null;
-
+             console.log(board)
+             return null;
+             
             }
 
+            
+            
+            
+            
 
-
-
-
-
-
-    </script>
+            
+            </script>
 </body>
 
 

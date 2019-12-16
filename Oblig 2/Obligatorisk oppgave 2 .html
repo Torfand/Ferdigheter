@@ -10,7 +10,7 @@
     <style>
         body {
             user-select: none;
-          
+
 
 
         }
@@ -21,7 +21,6 @@
     <div id="content">
     </div>
     <script>
-
         //Hjelpe  Variabler
         let output = document.getElementById("content")
 
@@ -37,12 +36,12 @@
         function display() {
             // denne slår på knappene " remove og edit" om en stolpe er valgt
             let toggle = isbuttondisabled == true ? 'disabled' : 'enabled'
-         
+
             let svgOutput = '';
 
             // her sier jeg at "i" er null, og om "i" er mindre enn lengden til "numbers arrayet" så legg til 1 på "i"
             for (let i = 0; i < numbers.length; i++) {
-                
+
                 let numberOfBar = i + 1;
 
                 svgOutput += createBars(numbers[i], i + 1);
@@ -57,7 +56,7 @@
                 <button id="addBtn" onclick="action('add')">Legg til stolpe</button>
                 <button id="removeBtn" ${toggle} onclick="action('remove')" >Fjærn stolpe</button>
                 <button id="changeBtn" ${toggle} onclick="action('edit')" >Endre på valgt stolpe</button>`;
-           
+
 
         }
 
@@ -74,7 +73,7 @@
             if (clickedbar != 'Ingen' && numberOfBar == clickedbar) {
                 border = 1;
             }
-                // her returnerer jeg rektangler 
+            // her returnerer jeg rektangler 
             return ` <rect onclick ="chosenbar(${numberOfBar})"
             width="${width}" 
             height="${height}" 
@@ -101,7 +100,6 @@
         //controller
         function chosenbar(numberOfBar) {
             // denne funksjonen sier at om en bar er valgt så skal den outpute hvilket nummer en har valgt , og om en bar er valgt skal den enable knappene "remove og edit"
-
             if (clickedbar == numberOfBar) {
                 isbuttondisabled = true;
                 clickedbar = 'Ingen'
@@ -117,44 +115,42 @@
         }
 
         function action(typeofAction) {
-            
+
             let inputValue = document.getElementById("value")
 
-          
-
-                if (typeofAction == 'add') {
-                    if (inputValue.value < 1 || inputValue.value > 10) {
-                        return alert("Kan kun legge til en stople med verdi fra 1 til 10")
-                    }
-                    if (numbers.length > 7) {
-                        numbers.length = 8
-                        return alert("Kan ikke ha mer enn 8 bars om gangen =(")
-                    }
-                    // push dytter in input sin verdi i arrayet "numbers"
-                    numbers.push(parseInt(inputValue.value))
-                    display();
+            if (typeofAction == 'add') {
+                if (inputValue.value < 1 || inputValue.value > 10) {
+                    return alert("Kan kun legge til en stople med verdi fra 1 til 10")
                 }
-
-                if (typeofAction == 'edit') {
-                    if (inputValue.value == 0 || inputValue.value > 10) {
-                        return alert('Verdi må vere fra 1 til 10')
-                    }
-                    // redigerer en bar(tall) i arrayet "numbers" utifra input sin verdi
-                    numbers[parseInt(clickedbar) - 1] = parseInt(inputValue.value);
-
-                    display();
+                if (numbers.length > 7) {
+                    numbers.length = 8
+                    return alert("Kan ikke ha mer enn 8 bars om gangen =(")
                 }
+                // push dytter in input sin verdi i arrayet "numbers"
+                numbers.push(parseInt(inputValue.value))
+                display();
+            }
 
-                if (typeofAction == 'remove') {
-                    if (numbers.length == 1) {
-                        clickedbar = 'Ingen'
-                        isbuttondisabled = true;
-                    }
-                    // splice i dette tilfellet fjerner en bar(tall) fra arrayet
-                    numbers.splice(parseInt(clickedbar) - 1, 1)
-                    display();
+            if (typeofAction == 'edit') {
+                if (inputValue.value == 0 || inputValue.value > 10) {
+                    return alert('Verdi må vere fra 1 til 10')
                 }
-            
+                // redigerer en bar(tall) i arrayet "numbers" utifra input sin verdi
+                numbers[parseInt(clickedbar) - 1] = parseInt(inputValue.value);
+
+                display();
+            }
+
+            if (typeofAction == 'remove') {
+                if (numbers.length == 1) {
+                    clickedbar = 'Ingen'
+                    isbuttondisabled = true;
+                }
+                // splice i dette tilfellet fjerner en bar(tall) fra arrayet
+                numbers.splice(parseInt(clickedbar) - 1, 1)
+                display();
+            }
+
         }
 
     </script>
