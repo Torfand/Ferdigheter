@@ -24,15 +24,14 @@
     <h1 id="info"></h1>
     <table border="1" id="snakeTable"></table>
     <script>
-
+        //model
 
         var counter = 0;
         var snakeModel;
         initModel();
         display();
-       
+       //view
         setInterval(move, 300);
-
         function display() {
             let snakeTable = document.getElementById("snakeTable");
             snakeTable.innerHTML = '';
@@ -60,13 +59,14 @@
      
         function displayScore() {
             let infoOut = document.getElementById("info")
-            let score = 0;
+            
             if (snakeModel.growth > 0) {
-                score++
+                counter++
+
             }
            
-            console.log(score)
-            infoOut.innerHTML = score;
+            
+            infoOut.innerHTML = counter;
         }
 
 
@@ -96,6 +96,7 @@
 
             };
         }
+        //controller
         function move() {
             if (!snakeModel.direction) return;
             snakeModel.snakeHead = crateNewSnakeHead();
