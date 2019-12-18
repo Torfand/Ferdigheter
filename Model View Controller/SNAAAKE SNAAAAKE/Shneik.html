@@ -21,20 +21,28 @@
 </head>
 
 <body onkeydown=" return snakeControls(event)">
-    <h1 id="info"></h1>
+    <div id="output">
+
+    </div>
     <table border="1" id="snakeTable"></table>
+
     <script>
         //model
 
-        var counter = 0;
+        var score = 0;
         var snakeModel;
         initModel();
         display();
-       //view
+        //view
         setInterval(move, 300);
         function display() {
+            let output = document.getElementById("output")
+            let page = '';
             let snakeTable = document.getElementById("snakeTable");
             snakeTable.innerHTML = '';
+            page += `<h1> Score:${score}</h1>
+            
+            `
 
 
             for (let rowIndex = 0; rowIndex < snakeModel.size; rowIndex++) {
@@ -54,19 +62,15 @@
             let td = snakeTable.rows[food.y].cells[food.x];
             td.classList.add('food');
 
+            output.innerHTML = page;
 
         }
-     
-        function displayScore() {
-            let infoOut = document.getElementById("info")
-            
-            if (snakeModel.growth > 0) {
-                counter++
 
+        function playerScored() {
+
+            if (snakeModel.growth > 0) {
+                score++
             }
-           
-            
-            infoOut.innerHTML = counter;
         }
 
 
@@ -102,8 +106,8 @@
             snakeModel.snakeHead = crateNewSnakeHead();
             if (snakeModel.growth > 0) {
                 snakeModel.growth--;
-                
-                
+
+
             } else {
                 let bodyPart = snakeModel.snakeHead;
                 let lastBodyPart = null;
@@ -116,13 +120,13 @@
                 }
             }
             if (snakeModel.snakeHead.x === snakeModel.food.x
-            && snakeModel.snakeHead.y === snakeModel.food.y) {
+                && snakeModel.snakeHead.y === snakeModel.food.y) {
                 snakeModel.food = createRandomPos();
                 snakeModel.growth = 1;
-                displayScore();
+                playerScored();
             }
             display();
-          
+
 
         }
 
