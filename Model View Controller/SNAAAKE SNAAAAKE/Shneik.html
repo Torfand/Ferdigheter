@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SNAAAKE, SNAAAKE?</title>
     <style>
         td {
@@ -20,25 +18,19 @@
             background-color: crimson;
         }
     </style>
-
-
-
-
 </head>
 
-
-
 <body onkeydown=" return snakeControls(event)">
-
+    <h1 id="info"></h1>
     <table border="1" id="snakeTable"></table>
-
-
     <script>
 
+
+        var counter = 0;
         var snakeModel;
         initModel();
         display();
-
+       
         setInterval(move, 300);
 
         function display() {
@@ -50,30 +42,42 @@
                 let tr = snakeTable.insertRow();
                 for (let columnindex = 0; columnindex < snakeModel.size; columnindex++) {
                     let td = tr.insertCell();
-
                 }
             }
             let bodyPart = snakeModel.snakeHead;
-            while(bodyPart != null) {
-               let td = snakeTable.rows[bodyPart.y].cells[bodyPart.x];
+            while (bodyPart != null) {
+                let td = snakeTable.rows[bodyPart.y].cells[bodyPart.x];
                 td.classList.add('snake');
                 bodyPart = bodyPart.newBodyPart;
             }
-           
 
             let food = snakeModel.food;
             let td = snakeTable.rows[food.y].cells[food.x];
             td.classList.add('food');
-        }
-        function initModel() {
 
+
+        }
+     
+        function displayScore() {
+            let infoOut = document.getElementById("info")
+            let score = 0;
+            if (snakeModel.growth > 0) {
+                score++
+            }
+           
+            console.log(score)
+            infoOut.innerHTML = score;
+        }
+
+
+        function initModel() {
             snakeModel = { size: 30 };
             snakeModel.snakeHead = createRandomPos();
             snakeModel.food = createRandomPos();
             snakeModel.growth = 0;
             snakeModel.newBodyPart = null;
-        }
 
+        }
 
         function createRandomPos() {
 
@@ -81,45 +85,55 @@
                 x: Math.floor(Math.random() * snakeModel.size),
                 y: Math.floor(Math.random() * snakeModel.size)
             }
-
         }
 
+        function crateNewSnakeHead() {
+            return {
+                x: snakeModel.snakeHead.x + snakeModel.direction.x,
+                y: snakeModel.snakeHead.y + snakeModel.direction.y,
+                newBodyPart: snakeModel.snakeHead
+
+
+            };
+        }
         function move() {
             if (!snakeModel.direction) return;
-            if (snakeModel.growth < 0) {
-               
-                let newSnakeHead = {
-                    x: snakeModel.snakeHead.x + snakeModel.direction.x,
-                    y: snakeModel.snakeHead.y + snakeModel.direction.y,
-                    newBodyPart : snakeModel.snakeHead
-                };
-               snakeModel.snakeHead = newSnakeHead; 
-
+            snakeModel.snakeHead = crateNewSnakeHead();
+            if (snakeModel.growth > 0) {
+                snakeModel.growth--;
+                
+                
+            } else {
+                let bodyPart = snakeModel.snakeHead;
+                let lastBodyPart = null;
+                while (bodyPart.newBodyPart != null) {
+                    lastBodyPart = bodyPart;
+                    bodyPart = bodyPart.newBodyPart;
+                }
+                if (lastBodyPart !== null) {
+                    lastBodyPart.newBodyPart = null
+                }
             }
-            else {
-                snakeModel.snakeHead.x += snakeModel.direction.x
-                snakeModel.snakeHead.y += snakeModel.direction.y
-            }
-
             if (snakeModel.snakeHead.x === snakeModel.food.x
-                && snakeModel.snakeHead.y === snakeModel.food.y) {
+            && snakeModel.snakeHead.y === snakeModel.food.y) {
                 snakeModel.food = createRandomPos();
-                snakeModel.growth  = 1;
-
+                snakeModel.growth = 1;
+                displayScore();
             }
-
             display();
+          
+
         }
 
         function snakeControls(event) {
             if (event.keyCode == 37) {
-                snakeModel.direction = { x: -1, y: 0 }; //L
+                snakeModel.direction = { x: -1, y: 0 }; //Left
             } else if (event.keyCode == 39) {
-                snakeModel.direction = { x: 1, y: 0 }; // R
+                snakeModel.direction = { x: 1, y: 0 }; // Right
             } else if (event.keyCode == 38) {
-                snakeModel.direction = { x: -0, y: -1 } //U
+                snakeModel.direction = { x: -0, y: -1 };//Up
             } else if (event.keyCode == 40) {
-                snakeModel.direction = { x: 0, y: 1 } //D
+                snakeModel.direction = { x: 0, y: 1 } //Down
             }
 
         }
