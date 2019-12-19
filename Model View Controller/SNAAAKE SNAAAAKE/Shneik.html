@@ -8,14 +8,21 @@
         td {
             width: 10px;
             height: 10px;
+
         }
+
 
         td.snake {
             background-color: chartreuse;
+            border-color: black;
         }
 
         td.food {
             background-color: crimson;
+        }
+
+        table {
+            background-color: green;
         }
     </style>
 </head>
@@ -23,24 +30,33 @@
 <body onkeydown=" return snakeControls(event)">
     <div id="output">
 
+
     </div>
-    <table border="1" id="snakeTable"></table>
+    <table border="3" id="snakeTable"></table>
 
     <script>
         //model
+        
 
         var score = 0;
+        let muliplyer = 'Ingen';
+        let lengthCount = 0;
         var snakeModel;
         initModel();
         display();
         //view
-        setInterval(move, 300);
+
+        let speed = setInterval(move, 300);
+
+        console.log('kjører speed 300')
         function display() {
             let output = document.getElementById("output")
             let page = '';
             let snakeTable = document.getElementById("snakeTable");
-            snakeTable.innerHTML = '';
-            page += `<h1> Score:${score}</h1>
+            let snakeBoard = '';
+            snakeBoard += ``;
+            snakeTable.innerHTML = ' ';
+            page += `<h1> Score: ${score}    |     Point Multiplyer: ${muliplyer}   | ${lengthCount}  </h1>
             
             `
 
@@ -63,13 +79,48 @@
             td.classList.add('food');
 
             output.innerHTML = page;
+            snakeSpeed();
+        }
+        function snakeSpeed() {
+            if (score > 5 && score < 7) {
+                clearInterval(speed);
+                speed = setInterval(move, 200)
+                console.log('kjører speed 200')
+
+            }
+            if (score > 19 && score < 21) {
+                clearInterval(speed);
+                speed = setInterval(move, 150)
+                console.log('Speed 150')
+            }
+            if (score > 49 ) {
+                clearInterval(speed)
+                speed = setInterval(move, 100)
+                console.log('speed 100')
+            }
 
         }
 
-        function playerScored() {
+        function playerScoreAndMuliplyer() {
 
             if (snakeModel.growth > 0) {
-                score++
+                score++;
+                lengthCount++;
+            }
+            if (score > 6 && score < 20) {
+                score++ + 1;
+                muliplyer = '+2'
+                console.log('kjører poeng 2x')
+            }
+            if (score > 20 && score <50) {
+                score = score++ + 3;
+                muliplyer = '+4'
+                console.log('kjører poeng 4x')
+            }
+            if (score >50) {
+                score = score++ + 5
+                muliplyer ='+6'
+                console.log('kjører poeng 6x')
             }
         }
 
@@ -82,7 +133,7 @@
             snakeModel.newBodyPart = null;
 
         }
-
+        console.log(snakeModel.size)
         function createRandomPos() {
 
             return {
@@ -123,8 +174,10 @@
                 && snakeModel.snakeHead.y === snakeModel.food.y) {
                 snakeModel.food = createRandomPos();
                 snakeModel.growth = 1;
-                playerScored();
+                playerScoreAndMuliplyer();
             }
+
+
             display();
 
 
@@ -140,6 +193,10 @@
             } else if (event.keyCode == 40) {
                 snakeModel.direction = { x: 0, y: 1 } //Down
             }
+            // if (snakeModel.size == snakeModel.direction) {
+            //     clearInterval(speed);
+
+            // }
 
         }
 
