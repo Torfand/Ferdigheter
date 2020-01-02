@@ -38,30 +38,28 @@
     <script>
 
 
-
-        var score = 0;
-        let muliplyer = 'Ingen';
+        let score = 0;
+        let muliplyer = 'No multipliers!';
         let lengthCount = 0;
-        var snakeModel;
-
+        let snakeModel;
         initModel();
         display();
-
         let speed = setInterval(move, 300);
 
 
         console.log('kjører speed 300')
         function display() {
             let page = '';
-            let output = document.getElementById("output")
+            let output = document.getElementById("output");
+
             let snakeTable = document.getElementById("snakeTable");
             let snakeBoard = '';
 
             snakeTable.innerHTML = ' ';
-            page += `<h1> Score: ${score}   |   Point Multiplier:${muliplyer}   |   ${lengthCount}</h1>
+            page += `<h1> Score: ${score}   |   Point Multiplier: ${muliplyer}   |  Snake Length: ${lengthCount}</h1>
            
             
-            `
+            `;
 
 
             for (let rowIndex = 0; rowIndex < snakeModel.size; rowIndex++) {
@@ -84,27 +82,39 @@
             output.innerHTML = page;
             snakeSpeed();
         }
+        function initModel() {
+            snakeModel = { size: 30 };
+            snakeModel.snakeHead = createRandomPos();
+            snakeModel.food = createRandomPos();
+            snakeModel.growth = 0;
+            snakeModel.newBodyPart = null;
+
+        }
         function snakeSpeed() {
             if (score > 5 && score < 7) {
                 clearInterval(speed);
-                speed = setInterval(move, 200)
-                console.log('kjører speed 200')
+                speed = setInterval(move, 200);
+                console.log('kjører speed 200');
 
             }
             if (score > 19 && score < 21) {
                 clearInterval(speed);
-                speed = setInterval(move, 150)
-                console.log('Speed 150')
+                speed = setInterval(move, 150);
+                console.log('Speed 150');
             }
-            if (score > 49) {
-                clearInterval(speed)
-                speed = setInterval(move, 100)
-                console.log('speed 100')
+            if (score > 49 && score < 100) {
+                clearInterval(speed);
+                speed = setInterval(move, 100);
+                console.log('speed 100');
             }
-
+            if (score > 100) {
+                clearInterval(speed);
+                speed = setInterval(move, 75);
+                console.log('Speed 50');
+            }
         }
 
-        function playerScoreAndMuliplyer() {
+        function playerScoreAndMultiplier() {
 
             if (snakeModel.growth > 0) {
                 score++;
@@ -112,30 +122,26 @@
             }
             if (score > 6 && score < 20) {
                 score++ + 1;
-                muliplyer = '+2'
-                console.log('kjører poeng 2x')
+                muliplyer = '+2';
+                console.log('kjører poeng 2x');
             }
             if (score > 20 && score < 50) {
                 score = score++ + 3;
-                muliplyer = '+4'
-                console.log('kjører poeng 4x')
+                muliplyer = '+4';
+                console.log('kjører poeng 4x');
             }
-            if (score > 50) {
-                score = score++ + 5
-                muliplyer = '+6'
-                console.log('kjører poeng 6x')
+            if (score > 50 && score < 100) {
+                score = score++ + 5;
+                muliplyer = '+6';
+                console.log('kjører poeng 6x');
+            }
+            if (score > 100) {
+                score = score++ + 9;
+                muliplyer = '+10';
             }
         }
 
 
-        function initModel() {
-            snakeModel = { size: 30 };
-            snakeModel.snakeHead = createRandomPos();
-            snakeModel.food = createRandomPos();
-            snakeModel.growth = 15;
-            snakeModel.newBodyPart = null;
-
-        }
 
         function createRandomPos() {
 
@@ -152,20 +158,21 @@
                 newBodyPart: snakeModel.snakeHead
 
 
-            };
+            }
         }
 
         function move() {
             if (!snakeModel.direction) return;
-            snakeModel.snakeHead = crateNewSnakeHead();
-            let newbody = crateNewSnakeHead();
-            if (snakeModel.snakeHead.x < 0 || snakeModel.snakeHead.x > snakeModel.size
-                || snakeModel.snakeHead.y < 0 || snakeModel.snakeHead.y > snakeModel.size || snakeCollisionDetected(newbody)) {
+            // snakeModel.snakeHead = crateNewSnakeHead();
+            let newBody = crateNewSnakeHead();
+            if (newBody.x < 0 || newBody.x > 29
+                || newBody.y < 0 || newBody.y > 29
+                || snakeCollisionDetected(newBody)) {
                 lossCondition();
 
 
             }
-
+            snakeModel.snakeHead = newBody;
             if (snakeModel.growth > 0) {
                 snakeModel.growth--;
 
@@ -185,7 +192,7 @@
                 && snakeModel.snakeHead.y === snakeModel.food.y) {
                 snakeModel.food = createRandomPos();
                 snakeModel.growth = 1;
-                playerScoreAndMuliplyer();
+                playerScoreAndMultiplier();
             }
 
 
@@ -198,7 +205,7 @@
 
             let body = snakeModel.snakeHead;
             do {
-                if (body.x - 1 == collision.x - 1 && body.y - 1 == collision.y - 1) {
+                if (body.x == collision.x && body.y == collision.y) {
                     console.log(body.x, collision.x, body.y, collision.y)
                     lossCondition();
                     return;
@@ -209,25 +216,38 @@
             while (body);
         }
         function lossCondition() {
-            clearInterval(speed)
-       
-            //   callLoss = `<h3>You lost with ${score} points, And a snake length of ${lengthCount}. <br>
-            //  Click the button to try again   :   <button >Restart Game</button></h3> `;
-            // return callLoss;
+            clearInterval(speed);
+            alert("Game over");
+            document.write(`<h1> You died with a Score of ${score}, A point
+                Multiplier of ${muliplyer}, And a snake length of ${lengthCount}.
+                Restart the game by clicking this button <button>Restart Game</button>`)
+
+
 
         }
 
         function snakeControls(event) {
-            if (event.keyCode == 37) {
+            let left = event.keyCode == 37;
+            let right = event.keyCode == 39;
+            var up = event.keyCode == 38;
+            var down = event.keyCode == 40;
+            if (left) {
                 snakeModel.direction = { x: -1, y: 0 }; //Left
-            } else if (event.keyCode == 39) {
+            } else if (right) {
                 snakeModel.direction = { x: 1, y: 0 }; // Right
-            } else if (event.keyCode == 38) {
-                snakeModel.direction = { x: -0, y: -1 };//Up
-            } else if (event.keyCode == 40) {
-                snakeModel.direction = { x: 0, y: 1 } //Down
+            } else if (up) {
+                
+                snakeModel.direction = { x: 0, y: -1 };//Up
             }
-            // if (snakeModel.direction.x == -0 && snakeModel.direction.y == -1)
+
+            else if (down) {
+                snakeModel.direction = { x: 0, y: 1 } // Down
+                //Down
+            }
+            // (snakeModel.direction.x == 0 && snakeModel.direction.y == -1) {
+            //     down = '' ;
+            //              console.log('drit')   
+            //          }
         }
 
     </script>
