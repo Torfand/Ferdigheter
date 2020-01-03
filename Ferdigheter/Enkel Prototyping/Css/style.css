@@ -1,0 +1,34 @@
+body {
+    padding: 0%;
+    margin: 0%;
+    
+}
+table {
+    border-collapse: collapse;
+    text-align: center;
+ 
+}
+table, td, th {
+    border: 1px solid black;
+    padding: 10px;
+}
+th {
+    background-color: crimson;
+} 
+
+.page {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-areas:
+    'Menu Menu'
+    'MainContent MainContent'
+    'MainContent MainContent';
+    }
+.Menu { grid-area: 1 / 1 / 2 / 3; 
+background-color: aqua;}
+.MainContent { grid-area: 2 / 1 / 6 / 3; }
+
