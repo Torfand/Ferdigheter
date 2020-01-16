@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        text {
+            font-family: Helvetica;
+            font-size: 200%;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="100%" height="50 ">
+        <rect x="0" y="0" height="100%" fill="lightgray"></rect>
+        <g id="texts"></g>
+
+    </svg>
+    <br>
+
+
+    <script>
+        let testobject = [
+            {
+                speed: 1,
+                id: 'txtnavn',
+                angle: 0,
+                x: 0,
+                text:'Navn',
+                color:'green'
+            },
+            {
+                speed: 3,
+                id: 'txtfastnavn',
+                angle: 0,
+                x: 0,
+                text: 'BÆÆÆÆÆÆÆ',
+                color: 'orange'
+            },
+            {
+                speed: 5,
+                id: 'txtmegafastnavn',
+                angle: 0,
+                x: 0,
+                text: 'VRÆÆÆÆÆL',
+                color: 'red'
+            },
+
+        ];
+        init();
+        setInterval(moveName, 30);
+        function init() {
+            let texts = document.getElementById('texts');
+            for(let i in testobject) {
+                let object = testobject[i];
+                texts.innerHTML += ` 
+                <text id="${object.id}" x="0" y=40 fill="${object.color}">${object.text}</text> `
+       
+            }
+        }
+
+
+
+
+        function moveName() {
+            for (let i in testobject) {
+                let object = testobject[i]
+                let txt = document.getElementById(object.id)
+                object.angle = (object.angle + object.speed) % 360;
+                object.x = Math.round(40 + 40 * Math.sin(Math.PI * object.angle / 180));
+                //console.log(x)
+                txt.setAttribute('x', object.x + '%')
+
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

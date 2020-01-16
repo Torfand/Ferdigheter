@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="swingText.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        text {
+            font-family: Helvetica;
+            font-size: 200%;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="100%" height="50 ">
+        <rect x="0" y="0" height="100%" fill="lightgray"></rect>
+        <g id="texts"></g>
+
+    </svg>
+    <br>
+
+
+    <script>
+        let testobject = [
+            new swingText(1, 'txtnavn', 'Navn', 'green'),
+            new swingText(3, 'txtfastnavn', 'BÆÆÆÆÆÆÆ', 'orange'),
+            new swingText(5, 'txtmegafastnavn','VRÆÆÆÆÆL', 'red'),
+        ];
+        console.log(testobject)
+        init();
+        setInterval(move, 30);
+        function init() {
+            let texts = document.getElementById('texts');
+            for (let i in testobject) {
+                texts.innerHTML += testobject[i].gethtml();
+
+            }
+        }
+        function move() {
+            for (let i in testobject) {
+                let object = testobject[i];
+                 object.move();
+            }
+        }
+    </script>
+</body>
+
+</html>
