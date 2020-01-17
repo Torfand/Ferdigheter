@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <svg width="1200" height="800">
+    </svg>
+    <script>
+        class Box {
+            constructor() {
+                this._color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                this._x = Math.floor(Math.random() * 600);
+                this._y = Math.floor(Math.random() * 400);
+                this._width = 100 + Math.floor(Math.random() * 500);
+                this._height = 100 + Math.floor(Math.random() * 300);
+            }
+            useX() {
+                return this._x;
+            }
+            useY() {
+                return this._y;
+
+            }
+            useWidth() {
+                return this._width;
+            }
+            useHeight() {
+                return this._height;
+            }
+            useColor() {
+                return this._color;
+            }
+        }
+
+        class BoxSet {
+            constructor() {
+                let count = 1 + Math.floor(Math.random() * 9);
+                this._boxes = [];
+                for (let i = 0; i < count; i++) {
+                    this._boxes.push(new Box());
+
+                }
+            }
+            useBoxes() {
+                return this._boxes;
+            }
+        }
+        class BoxView {
+            constructor(box) {
+                this._box = box;
+            }
+
+            getHtml() {
+                let html;
+                html = `
+                <rect 
+                x="${this._box.useX()}" 
+                y="${this._box.useY()}" 
+                width="${this._box.useWidth()}" 
+                height="${this._box.useHeight()}"
+                fill="${this._box.useColor()}"
+                />
+                `;
+                return html;
+            }
+        }
+        class BoxSetView {
+            constructor(BoxSet) {
+                this._svg = document.getElementsByTagName('svg')[0];
+                this._boxViews = [];
+                let boxes = boxSet.useBoxes();
+                for (let i in boxes) {
+                    this._boxViews.push(new BoxView(boxes[i]));
+
+                }
+            }
+
+            show() {
+                let html = '';
+                for (let i in this._boxViews) {
+                    html += this._boxViews[i].getHtml();
+                }
+                this._svg.innerHTML = html;
+            }
+
+
+
+
+
+        }
+
+        var boxSet = new BoxSet();
+        var boxSetView = new BoxSetView(boxSet);
+        boxSetView.show();
+    </script>
+</body>
+
+</html>
