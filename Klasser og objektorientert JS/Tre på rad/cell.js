@@ -24,7 +24,7 @@ index(){
 }
 content() {
     if (this.isBlank()) return '';
-    return this._content
+    return this._conten
 }
 
 }
