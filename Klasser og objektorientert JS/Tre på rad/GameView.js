@@ -7,8 +7,8 @@ class GameView {
 
     }
     show() {
-        let boardHTML = this._cellViews.reduce(
-        (html, cellView) => html + cellView.getHTML(), '');
+        let boardHTML = this._cellViews.reduce((html, cellView)
+            => html + cellView.getHTML(), '');
         let winnerHTML = '';
         if (this._game.isStopped()) {
             winnerHTML = `<h3 id="info">${this._game.getWinner()} Vant </h3>

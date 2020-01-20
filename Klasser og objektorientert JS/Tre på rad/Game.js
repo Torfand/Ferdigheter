@@ -24,7 +24,8 @@ class Game {
         this.checkWinning();
     }
     getRandomBlankCell() {
-        let blankCells = this._cells.filter(cell => cell.isBlank());
+        let blankCells;
+        blankCells = this._cells.filter(cell => cell.isBlank());
         if (blankCells.length == 0) return null;
         let index = Math.floor(Math.random() * blankCells.length);
         return blankCells[index];
