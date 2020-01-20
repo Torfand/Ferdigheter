@@ -3,7 +3,7 @@ class Game {
         this._isStopped = false;
         this._cells = [];
         for (let i = 0; i < 9; i++) {
-            this._cells.push(new Cell(i));
+            this._cells.push(new cell(i));
 
         }
     }
