@@ -19,8 +19,8 @@
 
     <script>
         let game = new Game();
-        let gameView = new gameView;
-        let GameController = new GameController;
+        let gameView = new gameView(game);
+        let gameController = new GameController(game);
         updateView();
         function updateView() {
             gameView.show();

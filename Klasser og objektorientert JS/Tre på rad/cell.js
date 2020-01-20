@@ -2,8 +2,6 @@ class cell {
 constructor(index) {
     this._content = null;
     this._index;
-
-
 }
 setX() {
     this._content = 'X';
