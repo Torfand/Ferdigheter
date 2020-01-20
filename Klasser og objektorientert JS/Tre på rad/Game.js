@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this._isStopped = false;
-        this._cells = []:
+        this._cells = [];
         for (let i = 0; i < 9; i++) {
             this._cells.push(new Cell(i));
 
@@ -44,5 +44,20 @@ class Game {
         let cell1 = this._cells[index1];
         let cell2 = this._cells[index2];
         let cell3 = this._cells[index3];
+        if(!cell1.isBlank() 
+        && cell2.content() === cell1.content()
+        && cell3.content() === cell1.content()) {
+            this._winner = cell1.isX() ? 'Du': 'Datamaskinen';
+            this._isStopped = true;
+        }
+        
+        
+    }
+    isStopped() {
+        return this._isStopped;
+
+    }
+    getWinner() {
+        return this._winner;
     }
 }
