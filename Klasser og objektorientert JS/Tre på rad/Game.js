@@ -41,7 +41,7 @@ class Game {
             || this.checkCombinationForWinning(2, 4, 6)
     }
 
-    checkCombinationForWinning() {
+    checkCombinationForWinning(index1, index2, index3) {
         let cell1 = this._cells[index1];
         let cell2 = this._cells[index2];
         let cell3 = this._cells[index3];
