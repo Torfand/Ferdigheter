@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <ol>
+            <todo-item v-for="name in personanameList" 
+            v-bind:todo="name" v-bind::key="name.id">
+            </todo-item>
+        </ol>
+
+
+    </div>
+    <script>
+        Vue.component('todo-item',
+            {
+                props: ['todo'],
+                template: '<li>{{ todo.text }}</li>'
+            });
+        let app = new Vue({
+            el: '#app',
+            data: {
+                personanameList: [
+                    { id: 0, text: 'Arsene' },
+                    { id: 1, text: 'Berith' },
+                    { id: 2, text: 'surr og rør' }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>
