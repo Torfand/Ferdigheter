@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ikke glemm og forandre title for fyyyy faen</title>
+    <style>
+        body {
+            user-select: none;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="content">
+
+
+
+
+
+    </div>
+    <script>
+
+        // help
+        let output = document.getElementById('content');
+        let selectedBarNum = 'Ingen Valgt'
+        let selectedBar;
+        let border = 0;
+        
+        //Model
+        let numbers = [9, 5, 2, 4, 7];
+        display();
+        
+        
+        
+        
+        
+        
+        //view
+        function display() {
+            
+            // let selectedBarNum = 'Ingen Valgt';
+            let svgOut = '';
+            for (let i = 0; i < numbers.length; i++) { 
+                let barNum = i + 1;
+                svgOut += makeItSo(numbers[i], i + 1);
+            }
+            
+            output.innerHTML =
+            ` <svg id ="charts" width ="500" viewBox = " 0 0 80 60" >${svgOut}</svg>
+            <br>
+            Du har valgt stolpe : <i id="selectedBar">${selectedBarNum}</i>
+            <br>
+            Verdi : 
+            <input  id="input"type"number" min="1" max="10">
+            <button id ="add" onclick ="addBar(a)">Legg til stolpe</button>
+            <button id ="change" onclick="changeBar(b)" disabled>Endre på valgt stolpe </button>
+            <button id = "remove" onclick = "removeBar(v)" disabled>Fjerne valgt stolpe</button> `
+            ;
+             }
+        
+        function makeItSo(num, barNum, ) {
+            const width = 8;
+            const spacing = 2;
+            let x = (barNum - 1) * (width + spacing);
+            let height = num * 6;
+            let y = 60 - height;
+            let color = colorize(1, 10, barNum);
+         
+               //onclick="clickedBar(${barNum})
+            //    stroke-width="${border}" stroke="black"
+              
+                
+                return `<rect  width="${width}" 
+                height="${height}" 
+                x ="${x}" 
+                y="${y}" 
+                fill="${color}" >
+                </rect>`;
+                }
+                // clickedBar(); 
+            
+            function colorize(min, max, val) {
+                let minHue = 240, maxHue = 0;
+                let currentPrecentage = (val - min) / (max - min);
+                let colorString = "hsl(" + ((currentPrecentage * (maxHue - minHue)) + minHue) + ", 100% , 50%";
+                return colorString;
+                // display();
+                // clickedBar();
+            }
+            
+            
+            
+            //controller
+            
+            
+            
+            // function clickedBar(barNum) {
+            //     let selectedBar = document.getElementById("selectedBar");
+                
+            //     if (barNum == selectedBarNum) {
+            //         selectedBarNum = 'Ingen Valgt'
+                    
+            //     }
+                
+            //     else {
+                    
+            //          selectedBarNum = barNum
+
+
+            // }
+
+
+            // if (barNum == selectedBarNum) {
+
+
+
+
+            // }
+            // // makeItSo("pjus", barNum);
+
+            // selectedBar.innerHTML = selectedBarNum
+            // makeItSo();
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
